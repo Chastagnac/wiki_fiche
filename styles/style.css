@@ -1,0 +1,56 @@
+.header {
+    margin-top: 10px;
+}
+
+
+.comptable{
+    border-color:  orange !important;
+}
+.entete{
+    color : orange;
+}      
+
+.texteorange{
+    color : orange !important;
+    background-color: #fff !important;
+}
+.activeorange:hover{
+    background-color: #ffa5003f !important;
+
+
+}
+.nav-pills > li.active > .activeorange{
+    background-color: orange !important;
+    color : white !important;
+}
+
+.comptable1{
+    color : white !important;
+    border-color:  orange !important;
+    background-color:  orange !important;
+}
+.comptabledeco{
+    color : white !important;
+    border-color:  #ffbd5e !important;
+    background-color:  #ffbd5e !important;
+}
+
+.btn-xs{
+    background-color: black !important;
+}
+
+
+
+.-success{
+    display: block !important;
+    margin-left: 20px !important;
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+
+.pdfstyle{
+    width: 35px;
+    height: 50px; display : block; margin : 10px;
+}        
