@@ -15,7 +15,8 @@
  *
  * @return vrai ou faux
  */
-function estConnecte() {
+function estConnecte()
+{
     return isset($_SESSION['idCompte']);
 }
 
@@ -29,7 +30,8 @@ function estConnecte() {
  *
  * @return null
  */
-function connecter($idCompte, $nom, $prenom) {
+function connecter($idCompte, $nom, $prenom)
+{
     $_SESSION['idCompte'] = $idCompte;
     $_SESSION['nom'] = $nom;
     $_SESSION['prenom'] = $prenom;
@@ -40,7 +42,8 @@ function connecter($idCompte, $nom, $prenom) {
  *
  * @return null
  */
-function deconnecter() {
+function deconnecter()
+{
     session_destroy();
 }
 
@@ -52,7 +55,8 @@ function deconnecter() {
  *
  * @return Date au format anglais aaaa-mm-jj
  */
-function dateFrancaisVersAnglais($maDate) {
+function dateFrancaisVersAnglais($maDate)
+{
     @list($jour, $mois, $annee) = explode('/', $maDate);
     return date('Y-m-d', mktime(0, 0, 0, $mois, $jour, $annee));
 }
@@ -65,7 +69,8 @@ function dateFrancaisVersAnglais($maDate) {
  *
  * @return Date au format format français jj/mm/aaaa
  */
-function dateAnglaisVersFrancais($maDate) {
+function dateAnglaisVersFrancais($maDate)
+{
     @list($annee, $mois, $jour) = explode('-', $maDate);
     $date = $jour . '/' . $mois . '/' . $annee;
     return $date;
@@ -78,7 +83,8 @@ function dateAnglaisVersFrancais($maDate) {
  *
  * @return String Mois au format aaaamm
  */
-function getMois($date) {
+function getMois($date)
+{
     @list($jour, $mois, $annee) = explode('/', $date);
     unset($jour);
     if (strlen($mois) == 1) {
@@ -87,7 +93,40 @@ function getMois($date) {
     return $annee . $mois;
 }
 
+/**
+ * Retourne la date actuelle
+ * 
+ *  @return String Date au format AAAA-JJ-MM
+ */
+function getDateToday()
+{
+    $today = getDate();
+    return ($today['year'] . "-" . $today['mday'] . "-" . $today["mon"]);
+}
 
+/**
+ * Vérifie la validité des cinqs arguments : le nom, le prenom, le login, le mdp et son doublon
+ *
+ * Des message d'erreurs sont ajoutés au tableau des erreurs
+ *
+ * @param String $nom       nom du compte
+ * @param String $prenom    prenom du compte
+ * @param String $login     login du compte
+ * @param String $mdp       mdp du compte
+ * @param String $mdp2      doublon du mdp pour vérifié celui du compte
+ *
+ * @return null
+ */
+function valideEnregistrement($nom, $prenom, $login, $mdp, $mdp2)
+{
+    if (($nom || $prenom || $login || $mdp || $mdp2) == '') {
+        ajouterErreur('Les champs ne peuvent pas être vide');
+    } else {
+        if ($mdp !== $mdp2) {
+            ajouterErreur('Les mots de passe ne peuvent pas être différents');
+        }
+    }
+}
 
 /**
  * Vérifie si une date est inférieure d'un an à la date actuelle
@@ -96,7 +135,8 @@ function getMois($date) {
  *
  * @return Boolean vrai ou faux
  */
-function estDateDepassee($dateTestee) {
+function estDateDepassee($dateTestee)
+{
     $dateActuelle = date('d/m/Y');
     @list($jour, $mois, $annee) = explode('/', $dateActuelle);
     $annee--;
@@ -113,7 +153,8 @@ function estDateDepassee($dateTestee) {
  *
  * @return null
  */
-function ajouterErreur($msg) {
+function ajouterErreur($msg)
+{
     if (!isset($_REQUEST['erreurs'])) {
         $_REQUEST['erreurs'] = array();
     }
@@ -125,7 +166,8 @@ function ajouterErreur($msg) {
  *
  * @return Integer le nombre d'erreurs
  */
-function nbErreurs() {
+function nbErreurs()
+{
     if (!isset($_REQUEST['erreurs'])) {
         return 0;
     } else {

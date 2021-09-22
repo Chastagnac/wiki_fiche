@@ -4,15 +4,9 @@
  * Vue Connexion
  *
  * PHP Version 7
- *
- * @category  PPE
- * @package   GSB
- * @author    Réseau CERTA <contact@reseaucerta.org>
- * @author    José GIL <jgil@ac-nice.fr>
- * @copyright 2017 Réseau CERTA
- * @license   Réseau CERTA
- * @version   GIT: <0>
- * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
+ * @category  Projet
+ * @package   Wiki Fiche
+ * @link      http://www.php.net/manual/fr/book.pdo.php PHP Data Objects sur php.net
  */
 ?>
 <div class="row">
@@ -41,9 +35,9 @@
                             </div>
                         </div>
                         <input class="btn btn-lg btn-success btn-block" type="submit" value="Se connecter">
-                        <input class="btn btn-lg btn-warning btn-block" type="submit" value="S'enregistrer">
                     </fieldset>
                 </form>
+                <button onclick="location.href='index.php?uc=connexion&action=demanderegister'" class="btn btn-lg btn-warning btn-block">S'enregistrer</button>
             </div>
         </div>
     </div>

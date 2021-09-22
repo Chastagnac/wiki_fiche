@@ -27,7 +27,8 @@
  * @package   Wiki Fiche
  * @link      http://www.php.net/manual/fr/book.pdo.php PHP Data Objects sur php.net
  */
-class PdoWiki {
+class PdoWiki
+{
 
     private static $serveur = 'mysql:host=localhost';
     private static $bdd = 'dbname=wiki_fiche';
@@ -40,11 +41,12 @@ class PdoWiki {
      * Constructeur privé, crée l'instance de PDO qui sera sollicitée
      * pour toutes les méthodes de la classe
      */
-    private function __construct() {
+    private function __construct()
+    {
         PdoWiki::$monPdo = new PDO(
-                PdoWiki::$serveur . ';' . PdoWiki::$bdd,
-                PdoWiki::$user,
-                PdoWiki::$mdp
+            PdoWiki::$serveur . ';' . PdoWiki::$bdd,
+            PdoWiki::$user,
+            PdoWiki::$mdp
         );
         PdoWiki::$monPdo->query('SET CHARACTER SET utf8');
     }
@@ -53,7 +55,8 @@ class PdoWiki {
      * Méthode destructeur appelée dès qu'il n'y a plus de référence sur un
      * objet donné, ou dans n'importe quel ordre pendant la séquence d'arrêt.
      */
-    public function __destruct() {
+    public function __destruct()
+    {
         PdoWiki::$monPdo = null;
     }
 
@@ -63,7 +66,8 @@ class PdoWiki {
      *
      * @return l'unique objet de la classe PdoWiki
      */
-    public static function getPdoWiki() {
+    public static function getPdoWiki()
+    {
         if (PdoWiki::$monPdoWiki == null) {
             PdoWiki::$monPdoWiki = new PdoWiki();
         }
@@ -78,9 +82,10 @@ class PdoWiki {
      *
      * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
      */
-    public function getInfosCompte($login, $mdp) {
+    public function getInfosCompte($login, $mdp)
+    {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-                'SELECT compte.id AS id, compte.nom AS nom, '
+            'SELECT compte.id AS id, compte.nom AS nom, '
                 . 'compte.prenom AS prenom '
                 . 'FROM compte '
                 . 'WHERE compte.login = :unLogin AND compte.mdp = :unMdp'
@@ -91,9 +96,10 @@ class PdoWiki {
         return $requetePrepare->fetch();
     }
 
-    public function getNomPrenomCompte($id) {
+    public function getNomPrenomCompte($id)
+    {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-                'SELECT compte.prenom, compte.nom '
+            'SELECT compte.prenom, compte.nom '
                 . 'FROM compte '
                 . 'WHERE compte.id = :unId '
         );
@@ -104,13 +110,40 @@ class PdoWiki {
 
 
     /**
+     * Enregistre le compte dans la base de donnée
+     *
+     * @param String $nom        Nom du compte
+     * @param String $prenom     Prénom du compte
+     * @param String $login        Login pour la connexion au compte
+     * @param String $mdp        Mdp du compte
+     * @param String $dateCreation        Mdp du compte
+     *
+     * @return null
+     */
+    function register($prenom, $nom, $login, $mdp, $dateCreation)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'INSERT INTO compte '
+                . 'VALUES (null, :unPrenom, :unNom, :unLogin, :unMdp, :uneDateCreation)'
+        );
+        $requetePrepare->bindParam(':unPrenom', $prenom, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unNom', $nom, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMdp', $mdp, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':uneDateCreation', $dateCreation, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+
+    /**
      * Recupère le nom par l'id
      * @param type $id
      * @return retourne le nom par l'id
      */
-    public function getNomById($id) {
+    public function getNomById($id)
+    {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-                'SELECT compte.nom as nom from compte '
+            'SELECT compte.nom as nom from compte '
                 . 'WHERE id = :IdCompte'
         );
         $requetePrepare->bindParam(':IdCompte', $id, PDO::PARAM_INT);
@@ -147,5 +180,4 @@ class PdoWiki {
 
         echo "Compte c'est hashé <br>";
     }
-
 }
