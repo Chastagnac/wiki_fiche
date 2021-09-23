@@ -19,10 +19,9 @@ switch ($action) {
         $fiches = $pdo->getFiches();
         include('vues/v_listFiche.php');
         break;
-    
-    case 'insererFiche' :
+
+    case 'insererFiche':
         $fiches = $pdo->insertFiches();
-        var_dump($fiches);
-        include('vues/v_listFiche.php');
-        break;     
+        include('vues/v_creerFiche.php');
+        break;
 }
