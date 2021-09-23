@@ -17,7 +17,12 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 switch ($action) {
     case 'selectionnerFiche':
         $fiches = $pdo->getFiches();
-
         include('vues/v_listFiche.php');
         break;
+    
+    case 'insererFiche' :
+        $fiches = $pdo->insertFiches();
+        var_dump($fiches);
+        include('vues/v_listFiche.php');
+        break;     
 }
