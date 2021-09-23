@@ -112,18 +112,21 @@ function getDateToday()
  * @param String $nom       nom du compte
  * @param String $prenom    prenom du compte
  * @param String $login     login du compte
+ * @param String $mail      mail du compte
  * @param String $mdp       mdp du compte
  * @param String $mdp2      doublon du mdp pour vérifié celui du compte
  *
  * @return null
  */
-function valideEnregistrement($nom, $prenom, $login, $mdp, $mdp2)
+function valideEnregistrement($nom, $prenom, $login, $mail, $mdp, $mdp2)
 {
     if (($nom || $prenom || $login || $mdp || $mdp2) == '') {
         ajouterErreur('Les champs ne peuvent pas être vide');
     } else {
         if ($mdp !== $mdp2) {
             ajouterErreur('Les mots de passe ne peuvent pas être différents');
+        } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            ajouterErreur('L\'email n\'est pas valide');
         }
     }
 }

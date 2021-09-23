@@ -86,7 +86,7 @@ class PdoWiki
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'SELECT compte.id AS id, compte.nom AS nom, '
-                . 'compte.prenom AS prenom '
+                . 'compte.prenom AS prenom, compte.mail AS mail '
                 . 'FROM compte '
                 . 'WHERE compte.login = :unLogin AND compte.mdp = :unMdp'
         );
@@ -126,21 +126,22 @@ class PdoWiki
      * @param String $prenom     Prénom du compte
      * @param String $login        Login pour la connexion au compte
      * @param String $mdp        Mdp du compte
+     * @param String $mail        mail du compte
      * @param String $dateCreation        Mdp du compte
      *
      * @return null
      */
-    function register($prenom, $nom, $login, $mdp, $dateCreation)
+    function register($prenom, $nom, $login, $mdp, $mail)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'INSERT INTO `compte`(`id`, `prenom`, `nom`, `login`, `mdp`, `datecreation`) '
-                . 'VALUES (DEFAULT, :unPrenom, :unNom, :unLogin, :unMdp, :uneDateCreation)'
+            'INSERT INTO `compte`(`id`, `prenom`, `nom`, `login`, `mdp`, `mail`) '
+                . 'VALUES (DEFAULT, :unPrenom, :unNom, :unLogin, :unMdp, :unMail)'
         );
         $requetePrepare->bindParam(':unPrenom', $prenom, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unNom', $nom, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMdp', $mdp, PDO::PARAM_STR);
-        $requetePrepare->bindParam(':uneDateCreation', $dateCreation, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMail', $mail, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
 
