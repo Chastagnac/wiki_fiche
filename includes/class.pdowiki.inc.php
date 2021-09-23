@@ -157,7 +157,7 @@ class PdoWiki
         $requetePrepare->bindParam(':libelle', $libelle, PDO::PARAM_STR);
         $requetePrepare->bindParam(':description', $description, PDO::PARAM_STR);
         $requetePrepare->execute();
-    }*/
+    }
 
     /**
      * Enregistre le compte dans la base de donnée
