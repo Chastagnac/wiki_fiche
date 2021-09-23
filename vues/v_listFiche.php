@@ -23,11 +23,14 @@
             <?php
             foreach ($fiches as $fiche) {
                 $id = $fiche['id'];
+                $idcategorie = $fiche['idcategorie'];
                 $idcompte = $fiche['idcompte'];
                 $libelle = $fiche['libelle'];
                 $description = $fiche['description'];
+                $contenu = $fiche['contenu'];
                 $datemodif = $fiche['datemodif'];
                 $datecreation = $fiche['datecreation'];
+                $likes = $fiche['nblike']
             ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <div class="shadow-sm">
