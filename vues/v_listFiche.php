@@ -56,8 +56,6 @@
 <!DOCTYPE html>
 <html>
 <script type="text/javascript" src="js/checkbox.js"></script>
-<link type="styles/css" rel="stylesheet" href="styles/style.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 <div class="dropdown">
@@ -66,31 +64,26 @@
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
-
         <li>
             <label>
                 <input type="checkbox"> Developpement
             </label>
         </li>
-
         <li>
             <label>
                 <input type="checkbox"> ActuWeb
             </label>
         </li>
-
         <li>
             <label>
                 <input type="checkbox"> Mobile
             </label>
         </li>
-
         <li>
             <label>
                 <input type="checkbox"> Jeux
             </label>
         </li>
-
     </ul>
 </div>
 
