@@ -121,8 +121,10 @@ class PdoWiki
             'SELECT fiche.id AS id, fiche.idcategorie AS idcategorie, fiche.idcompte AS idcompte, '
                 . 'fiche.libelle AS libelle, '
                 . 'fiche.description AS description, '
+                . 'fiche.contenu AS contenu, '
                 . 'fiche.datemodif AS datemodif, '
-                . 'fiche.datecreation AS datecreation '
+                . 'fiche.datecreation AS datecreation, '
+                . 'fiche.nblike AS nblike '
                 . 'FROM fiche '
                 . 'ORDER BY fiche.datecreation'
         );
@@ -135,16 +137,20 @@ class PdoWiki
             $idcompte = $laLigne['idcompte'];
             $libelle = $laLigne['libelle'];
             $description = $laLigne['description'];
+            $contenu = $laLigne['contenu'];
             $datemodif = $laLigne['datemodif'];
             $datecreation = $laLigne['datecreation'];
+            $nblike = $laLigne['nblike'];
             $fiches[] = array(
                 'id'            => $id,
                 'idcategorie'   => $idcategorie,
                 'idcompte'      => $idcompte,
                 'libelle'       => $libelle,
                 'description'   => $description,
+                'contenu    '   => $contenu,
                 'datemodif'     => $datemodif,
-                'datecreation'  => $datecreation
+                'datecreation'  => $datecreation,
+                'nblike'        => $nblike
             );
         }
         return $fiches;
@@ -153,22 +159,20 @@ class PdoWiki
     /**
      * Permets de créer une fiche par un utilisateur
      *
-     *
-     * @return array
+     * @return null
      */
-    function insertFiches()
+    function insertFiches($idcategorie, $idCompte, $libelle, $description, $contenu)
     {
         $idCompte = $_SESSION['idCompte'];
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'INSERT INTO `fiches`(`id`, `idcategorie`, `idcompte`, `libelle`, `description`, `contenu`, `datemodif`, `datecreation`,`nblike`) '
+            'INSERT INTO `fiche`(`id`, `idcategorie`, `idcompte`, `libelle`, `description`, `contenu`, `datemodif`, `datecreation`, `nblike`) '
                 . 'VALUES (DEFAULT, :idcategorie, :idCompte, :libelle, :description, :contenu, DEFAULT, DEFAULT, DEFAULT)'
         );
-        $requetePrepare->bindParam(':idcategorie', $idcategorie, PDO::PARAM_STR);
-        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idcategorie', $idcategorie, PDO::PARAM_INT);
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_INT);
         $requetePrepare->bindParam(':libelle', $libelle, PDO::PARAM_STR);
-        $requetePrepare->bindParam(':description', $description, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':description', $description);
         $requetePrepare->bindParam(':contenu', $contenu, PDO::PARAM_STR);
-        $requetePrepare->bindParam(':nblike', $nblike, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
 
