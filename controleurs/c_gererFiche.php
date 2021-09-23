@@ -14,3 +14,10 @@ $idCompte = $_SESSION['idCompte'];
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
 
+switch ($action) {
+    case 'selectionnerFiche':
+        $fiches = $pdo->getFiches();
+
+        include('vues/v_listFiche.php');
+        break;
+}

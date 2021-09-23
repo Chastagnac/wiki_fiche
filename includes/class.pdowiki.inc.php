@@ -23,7 +23,7 @@
  *
  * PHP Version 7
  *
- * @category  PPE
+ * @category  Projet
  * @package   Wiki Fiche
  * @link      http://www.php.net/manual/fr/book.pdo.php PHP Data Objects sur php.net
  */
@@ -109,6 +109,16 @@ class PdoWiki
     }
 
 
+    public function getFiches()
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare("");
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $requetePrepare->fetchAll();
+    }
+
+
     /**
      * Enregistre le compte dans la base de donnée
      *
@@ -123,8 +133,8 @@ class PdoWiki
     function register($prenom, $nom, $login, $mdp, $dateCreation)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'INSERT INTO compte '
-                . 'VALUES (null, :unPrenom, :unNom, :unLogin, :unMdp, :uneDateCreation)'
+            'INSERT INTO `compte`(`id`, `prenom`, `nom`, `login`, `mdp`, `datecreation`) '
+                . 'VALUES (DEFAULT, :unPrenom, :unNom, :unLogin, :unMdp, :uneDateCreation)'
         );
         $requetePrepare->bindParam(':unPrenom', $prenom, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unNom', $nom, PDO::PARAM_STR);

@@ -38,7 +38,7 @@
                 <div class="row vertical-align">
                     <div class="col-md-4">
                         <h1>
-                            <img src="./images/logo.jpg" class="img-responsive" alt="Wiki fiche" title="wifi fiche">
+                            <img src="./images/logo.png" class="img-responsive" alt="Wiki fiche" title="wifi fiche">
                         </h1>
                     </div>
                     <div class="col-md-8">
@@ -49,8 +49,8 @@
                                     Accueil
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'etatFrais') { ?>class="active" <?php } ?>>
-                                <a href="index.php?uc=etatFrais&action=selectionnerMois">
+                            <li <?php if ($uc == 'gererFiche') { ?>class="active" <?php } ?>>
+                                <a href="index.php?uc=gererFiche&action=selectionnerFiche">
                                     <span class="glyphicon glyphicon-list-alt"></span>
                                     Fiche
                                 </a>
@@ -69,7 +69,7 @@
         } else {
         ?>
             <h1>
-                <img src="./images/logo.jpg" class="img-responsive center-block" alt="Logo Wiki fiche" title="Wiki fiche">
+                <img src="./images/logo.png" class="img-responsive center-block" alt="Logo Wiki fiche" title="Wiki fiche">
             </h1>
         <?php
         }

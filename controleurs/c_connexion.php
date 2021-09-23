@@ -49,6 +49,7 @@ switch ($action) {
             include 'vues/v_erreurs.php';
             include 'vues/v_register.php';
         } else {
+            
             $pdo->register(
                 $prenom,
                 $nom,
@@ -56,7 +57,6 @@ switch ($action) {
                 $mdp,
                 $today
             );
-            var_dump($nom, $prenom, $login, $mdp, $mdp2, $today);
             include 'vues/v_connexion.php';
         }
         break;

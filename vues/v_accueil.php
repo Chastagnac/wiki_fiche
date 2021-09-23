@@ -11,7 +11,7 @@
 ?>
 <div id="accueil">
     <h2>
-        Gestion des frais<small> - Visiteur : 
+        Bienvenue Wiki Ficheur ! <small> 
             <?php 
             echo $_SESSION['prenom'] . ' ' . $_SESSION['nom']
             ?></small>
@@ -29,14 +29,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <a href="index.php?uc=gererFiche&action=saisirFrais"
-                           class="btn btn-danger btn-lg" role="button">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            <br>Fiche1</a>
-                        <a href="index.php?uc=gererFiche&action=selectionnerMois"
-                           class="btn btn-danger btn-lg" role="button">
-                            <span class="glyphicon glyphicon-list-alt"></span>
-                            <br>Fiche2</a>
+                        
                     </div>
                 </div>
             </div>

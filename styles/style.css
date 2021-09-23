@@ -54,3 +54,22 @@
     width: 35px;
     height: 50px; display : block; margin : 10px;
 }        
+
+
+body {
+    background: #f4f4f4;
+  }
+  
+  .banner {
+    background: #a770ef;
+    background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+    background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+  }
+
+
+.shadow-sm {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 2%;
+    margin: 10px;
+}
