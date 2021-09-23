@@ -109,15 +109,55 @@ class PdoWiki
     }
 
 
+    /**
+     * Retourne chaque fiche dans un tableau associative
+     *
+     *
+     * @return array
+     */
     public function getFiches()
     {
-        $requetePrepare = PdoWiki::$monPdo->prepare("");
-        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
-        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+        'SELECT fiche.id AS id, fiche.idcompte AS idcompte, '
+        . 'fiche.libelle AS libelle, '
+        . 'fiche.description AS description, '
+        . 'fiche.datemodif AS datemodif, '
+        . 'fiche.datecreation AS datecreation '
+        . 'FROM fiche '
+        . 'ORDER BY fiche.datecreation'
+        );
         $requetePrepare->execute();
         return $requetePrepare->fetchAll();
+        $fiches = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+            $id = $laLigne['id'];
+            $idcompte = $laLigne['idcompte'];
+            $libelle = $laLigne['libelle'];
+            $description = $laLigne['description'];
+            $datemodif = $laLigne['datemodif'];
+            $datecreation = $laLigne['datecreation'];
+            $fiches[] = array(
+                'id'            => $id,
+                'idcompte'      => $idcompte,
+                'libelle'       => $libelle,
+                'description'   => $description,
+                'datemodif'     => $datemodif,
+                'datecreation'  => $datecreation
+            );
+        }
+        return $fiches;
     }
 
+    function insertFiches()
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'INSERT INTO `fiches`(`libelle`, `description`) '
+                . 'VALUES (DEFAULT, :libelle, :description)'
+        );
+        $requetePrepare->bindParam(':libelle', $libelle, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':description', $description, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }*/
 
     /**
      * Enregistre le compte dans la base de donnée
