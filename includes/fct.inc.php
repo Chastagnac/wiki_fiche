@@ -181,7 +181,7 @@ function nbErreurs()
 
 function checkFiche($libelle, $description, $contenu)
 {
-    if (($libelle || $description || $contenu) == '')
+    if ($libelle || $description || $contenu == '')
     {
         ajouterErreur('Les champs ne peuvent pas être vide');
     }
