@@ -35,7 +35,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <div class="shadow-sm">
                         <div class="p-4">
-                            <h4> <a href="#" class="text-dark">
+                            <h4> <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark">
                                     <?php echo htmlspecialchars($libelle) ?></a></h4>
                             <p class="text-muted mb-0">
                                 <?php echo htmlspecialchars($description) ?>
