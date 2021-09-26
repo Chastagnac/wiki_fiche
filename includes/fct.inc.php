@@ -131,6 +131,7 @@ function valideEnregistrement($nom, $prenom, $login, $mail, $mdp, $mdp2)
     }
 }
 
+
 /**
  * Vérifie si une date est inférieure d'un an à la date actuelle
  *
@@ -175,5 +176,13 @@ function nbErreurs()
         return 0;
     } else {
         return count($_REQUEST['erreurs']);
+    }
+}
+
+function checkFiche($libelle, $description, $contenu)
+{
+    if ($libelle || $description || $contenu == '')
+    {
+        ajouterErreur('Les champs ne peuvent pas être vide');
     }
 }

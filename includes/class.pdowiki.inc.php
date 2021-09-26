@@ -157,6 +157,23 @@ class PdoWiki
     }
 
     /**
+     * Retourne 1 fiche dans un tableau associative
+     *
+     * @return null
+     */
+    public function getTheFiche($idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'SELECT * FROM fiche '
+                . 'WHERE fiche.id = :idFiche '
+                . 'ORDER BY fiche.datecreation'
+        );
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_INT);
+        $requetePrepare->execute();
+        return $requetePrepare->fetch();
+    }
+
+    /**
      * Permets de créer une fiche par un utilisateur
      *
      * @return null

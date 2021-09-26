@@ -21,12 +21,26 @@ switch ($action) {
         break;
 
     case 'insererFiche':
+        include('vues/v_creerFiche.php');
+        break;
+    case 'insert':
         $idCategorie = filter_input(INPUT_POST, 'categorie', FILTER_SANITIZE_NUMBER_INT);
         $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_STRING);
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         $contenu = filter_input(INPUT_POST, 'contenu', FILTER_SANITIZE_STRING);
-        $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu);
-        include('vues/v_creerFiche.php');
+        checkFiche($libelle, $description, $contenu);
+        if (nbErreurs() !== 0) {
+            include 'vues/v_erreurs.php';
+            include 'vues/v_creerFiche.php';
+        } else {
+            $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu);
+            include 'vues/v_successful.php';
+        }
         break;
-    
+
+    case 'visiterFiche':
+        $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+        $theFiche = $pdo->getTheFiche($idFiche);
+        include 'vues/v_fiche.php';
+        break;
 }
