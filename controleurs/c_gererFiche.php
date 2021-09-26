@@ -21,7 +21,6 @@ switch ($action) {
         break;
 
     case 'insererFiche':
-
         include('vues/v_creerFiche.php');
         break;
     case 'insert':
@@ -37,4 +36,11 @@ switch ($action) {
             $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu);
             include 'vues/v_successful.php';
         }
+        break;
+
+    case 'visiterFiche':
+        $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+        $theFiche = $pdo->getTheFiche($idFiche);
+        include 'vues/v_fiche.php';
+        break;
 }
