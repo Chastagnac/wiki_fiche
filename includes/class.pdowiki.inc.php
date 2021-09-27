@@ -30,10 +30,10 @@
 class PdoWiki
 {
 
-    private static $serveur = 'mysql:host=localhost';
-    private static $bdd = 'dbname=wiki_fiche';
-    private static $user = 'root';
-    private static $mdp = '';
+    private static $serveur = 'mysql:host=91.234.194.37:3306';
+    private static $bdd = 'dbname=chastagnac_wiki_fiche';
+    private static $user = 'chastagnac';
+    private static $mdp = 'Ju60Dzc5y4';
     private static $monPdo;
     private static $monPdoWiki = null;
 
@@ -155,6 +155,56 @@ class PdoWiki
         }
         return $fiches;
     }
+
+    /**
+     * Retourne chaque fiche dans un tableau associative
+     *
+     *
+     * @return null
+     */
+     public function getFicheByCategorie($idcategorie)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'SELECT fiche.id AS id, fiche.idcategorie AS idcategorie, fiche.idcompte AS idcompte, '
+                . 'fiche.libelle AS libelle, '
+                . 'fiche.description AS description, '
+                . 'fiche.contenu AS contenu, '
+                . 'fiche.datemodif AS datemodif, '
+                . 'fiche.datecreation AS datecreation, '
+                . 'fiche.nblike AS nblike '
+                . 'FROM fiche '
+                . 'WHERE fiche.idcategorie = :idcategorie '
+                . 'ORDER BY fiche.datecreation'
+        );
+        $requetePrepare->bindParam(':idcategorie', $idcategorie, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $requetePrepare->fetchAll();
+        $fiches = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+            $id = $laLigne['id'];
+            $idcategorie = $laLigne['idcategorie'];
+            $idcompte = $laLigne['idcompte'];
+            $libelle = $laLigne['libelle'];
+            $description = $laLigne['description'];
+            $contenu = $laLigne['contenu'];
+            $datemodif = $laLigne['datemodif'];
+            $datecreation = $laLigne['datecreation'];
+            $nblike = $laLigne['nblike'];
+            $fiches[] = array(
+                'id'            => $id,
+                'idcategorie'   => $idcategorie,
+                'idcompte'      => $idcompte,
+                'libelle'       => $libelle,
+                'description'   => $description,
+                'contenu    '   => $contenu,
+                'datemodif'     => $datemodif,
+                'datecreation'  => $datecreation,
+                'nblike'        => $nblike
+            );
+        }
+        return $fiches;
+    }
+    
 
     /**
      * Retourne 1 fiche dans un tableau associative

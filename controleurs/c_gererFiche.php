@@ -43,4 +43,15 @@ switch ($action) {
         $theFiche = $pdo->getTheFiche($idFiche);
         include 'vues/v_fiche.php';
         break;
+
+    case 'getFicheByCategorie':
+        if (isset($_POST['idcateg'])) {
+            foreach ($_POST['idcateg'] as $idCategorie) {
+                $fiches[] = $pdo->getFicheByCategorie($idCategorie);
+            }
+        } else {
+            header("Location: index.php?uc=gererFiche&action=selectionnerFiche");
+        }
+        include 'vues/v_listFiche.php';
+        break;
 }
