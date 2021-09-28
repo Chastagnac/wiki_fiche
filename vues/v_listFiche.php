@@ -17,20 +17,22 @@
     <button onclick="location.href='index.php?uc=gererFiche&action=insererFiche'" class="btn btn-lg btn-primary btn-block">Créer une fiche</button>
 </div>
 <div class="container-fluid">
-    <div class="px-lg-5">
+    <div class="px-lg-2">
         <div class="row">
             <!-- Gallery item -->
             <?php
-            foreach ($fiches as $fiche) {
-                $id = $fiche['id'];
-                $idcategorie = $fiche['idcategorie'];
-                $idcompte = $fiche['idcompte'];
-                $libelle = $fiche['libelle'];
-                $description = $fiche['description'];
-                $contenu = $fiche['contenu'];
-                $datemodif = $fiche['datemodif'];
-                $datecreation = $fiche['datecreation'];
-                $likes = $fiche['nblike']
+            $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
+            if ($action !== 'getFicheByCategorie') {
+                foreach ($fiches as $fiche) {
+                    $id = $fiche['id'];
+                    $idcategorie = $fiche['idcategorie'];
+                    $idcompte = $fiche['idcompte'];
+                    $libelle = $fiche['libelle'];
+                    $description = $fiche['description'];
+                    $contenu = $fiche['contenu'];
+                    $datemodif = $fiche['datemodif'];
+                    $datecreation = $fiche['datecreation'];
+                    $likes = $fiche['nblike']
             ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <div class="shadow-sm">
@@ -43,46 +45,52 @@
                             <a class="btn btn-info" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>">J'aime</a> <?= $likes ?>
                         </div>
                     </div>
-                </div>
-                <!-- End -->
+                    <!-- End -->
+                    <?php
+                }
+            } else {
+                foreach ($fiches as $fiche) {
+                    foreach ($fiche as $uneFiche) {
+                        $id = $uneFiche['id'];
+                        $idcategorie = $uneFiche['idcategorie'];
+                        $idcompte = $uneFiche['idcompte'];
+                        $libelle = $uneFiche['libelle'];
+                        $description = $uneFiche['description'];
+                        $contenu = $uneFiche['contenu'];
+                        $datemodif = $uneFiche['datemodif'];
+                        $datecreation = $uneFiche['datecreation'];
+                        $likes = $uneFiche['nblike']
+                    ?>
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                            <div class="shadow-sm">
+                                <div class="p-4">
+                                    <h4> <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark">
+                                            <?php echo htmlspecialchars($libelle) ?></a></h4>
+                                    <p class="text-muted mb-0">
+                                        <?php echo htmlspecialchars($description) ?>
+                                    </p>
+                                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                        <div class="badge badge-danger px-3 rounded-pill font-weight-normal">Like</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
             <?php
+                    }
+                }
             }
             ?>
+
+            <ul>
+                <form id="form" method="post" action="index.php?uc=gererFiche&action=getFicheByCategorie">
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="1"> developpement<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="2"> actuweb<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="3"> mobile<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="4"> jeux<br>
+                    <button type="submit" class="text-dark" class="btn btn-lg btn-primary btn-block">valider categorie</button>
+                </form>
+            </ul>
         </div>
     </div>
 </div>
-<!DOCTYPE html>
-<html>
-<script type="text/javascript" src="js/checkbox.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-<div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <i class="glyphicon glyphicon-cog"></i>
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
-        <li>
-            <label>
-                <input type="checkbox"> Developpement
-            </label>
-        </li>
-        <li>
-            <label>
-                <input type="checkbox"> ActuWeb
-            </label>
-        </li>
-        <li>
-            <label>
-                <input type="checkbox"> Mobile
-            </label>
-        </li>
-        <li>
-            <label>
-                <input type="checkbox"> Jeux
-            </label>
-        </li>
-    </ul>
-</div>
-
-</html>
