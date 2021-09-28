@@ -19,6 +19,15 @@
 <div class="container-fluid">
     <div class="px-lg-2">
         <div class="row">
+            <ul>
+                <form id="form" method="post" action="index.php?uc=gererFiche&action=getFicheByCategorie">
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="1"> developpement<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="2"> actuweb<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="3"> mobile<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="4"> jeux<br>
+                    <button type="submit" class="text-dark" class="btn btn-lg btn-primary btn-block">valider categorie</button>
+                </form>
+            </ul>
             <!-- Gallery item -->
             <?php
             $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
@@ -34,15 +43,16 @@
                     $datecreation = $fiche['datecreation'];
                     $likes = $fiche['nblike']
             ?>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="shadow-sm">
-                        <div class="p-4">
-                            <h4> <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark">
-                                    <?php echo htmlspecialchars($libelle) ?></a></h4>
-                            <p class="text-muted mb-0">
-                                <?php echo htmlspecialchars($description) ?>
-                            </p>
-                            <a class="btn btn-info" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>">J'aime</a> <?= $likes ?>
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="shadow-sm">
+                            <div class="p-4">
+                                <h4> <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark">
+                                        <?php echo htmlspecialchars($libelle) ?></a></h4>
+                                <p class="text-muted mb-0">
+                                    <?php echo htmlspecialchars($description) ?>
+                                </p>
+                                <a class="btn btn-info" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>">J'aime</a> <?= $likes ?>
+                            </div>
                         </div>
                     </div>
                     <!-- End -->
@@ -69,9 +79,7 @@
                                     <p class="text-muted mb-0">
                                         <?php echo htmlspecialchars($description) ?>
                                     </p>
-                                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                        <div class="badge badge-danger px-3 rounded-pill font-weight-normal">Like</div>
-                                    </div>
+                                    <a class="btn btn-info" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>">J'aime</a> <?= $likes ?>
                                 </div>
                             </div>
                         </div>
@@ -81,16 +89,6 @@
                 }
             }
             ?>
-
-            <ul>
-                <form id="form" method="post" action="index.php?uc=gererFiche&action=getFicheByCategorie">
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="1"> developpement<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="2"> actuweb<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="3"> mobile<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="4"> jeux<br>
-                    <button type="submit" class="text-dark" class="btn btn-lg btn-primary btn-block">valider categorie</button>
-                </form>
-            </ul>
         </div>
     </div>
 </div>
