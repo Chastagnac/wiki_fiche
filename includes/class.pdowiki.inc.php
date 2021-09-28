@@ -30,10 +30,10 @@
 class PdoWiki
 {
 
-    private static $serveur = 'mysql:host=localhost';
-    private static $bdd = 'dbname=wiki_fiche';
-    private static $user = 'root';
-    private static $mdp = '';
+    private static $serveur = 'mysql:host=91.234.194.37:3306';
+    private static $bdd = 'dbname=chastagnac_wiki_fiche';
+    private static $user = 'chastagnac';
+    private static $mdp = 'Ju60Dzc5y4';
     private static $monPdo;
     private static $monPdoWiki = null;
 
@@ -218,6 +218,99 @@ class PdoWiki
         $requetePrepare->bindParam(':unMail', $mail, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
+
+    /**
+     * Like la fiche dans la base de donnée
+     *
+     * @param String $idFiche       id de la fiche
+     *
+     * @return null
+     */
+    function likerFiche($idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'UPDATE `fiche` set fiche.nblike = fiche.nblike + 1 where fiche.id = :ficheId '
+        );
+        $requetePrepare->bindParam(':ficheId', $idFiche, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    /**
+     * Enleve le like de la fiche
+     *
+     * @param String $idFiche       id de la fiche
+     *
+     * @return null
+     */
+    function unLike($idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'UPDATE `fiche` set fiche.nblike = fiche.nblike - 1 where fiche.id = :ficheId '
+        );
+        $requetePrepare->bindParam(':ficheId', $idFiche, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    /**
+     * Insert a like on db
+     *
+     * @param String $idCompte      id du compte
+     * @param String $idFiche       id de la fiche
+     *
+     * @return null
+     */
+    function insertLike($idCompte, $idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'INSERT INTO `jaime`(`id`, `idcompte`, `idfiche`) '
+                . 'VALUES (DEFAULT, :idCompte, :idFiche) '
+        );
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+
+    /**
+     * Delete le like de la table jaime
+     *
+     * @param String $idCompte      id du compte
+     * @param String $idFiche       id de la fiche
+     *
+     * @return null
+     */
+    function deleteLike($idCompte, $idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'DELETE FROM `jaime` WHERE jaime.idcompte = :idCompte AND jaime.idfiche = :idFiche'
+        );
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    /**
+     * Retourne le nombre de lignes
+     *
+     * @param String $idCompte      id du compte
+     * @param String $idFiche       id de la fiche
+     *
+     * @return nbLignes
+     */
+    function checkLike($idCompte, $idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'SELECT count(*) AS nb from jaime WHERE jaime.idcompte = :idCompte and jaime.idfiche = :idFiche'
+        );
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $laLigne = $requetePrepare->fetch();
+        return $laLigne;
+    }
+
+
+
 
 
     /**

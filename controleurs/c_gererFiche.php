@@ -43,4 +43,20 @@ switch ($action) {
         $theFiche = $pdo->getTheFiche($idFiche);
         include 'vues/v_fiche.php';
         break;
+
+    case 'likerFiche':
+        $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+        $lignes = $pdo->checkLike($idCompte, $idFiche);
+        if ($lignes['nb'] == 0) {
+            $pdo->likerFiche($idFiche);
+            $pdo->insertLike($idCompte, $idFiche);
+            include 'vues/v_successful.php';
+        } else {
+            $pdo->unLike($idFiche);
+            $pdo->deleteLike($idCompte, $idFiche);
+            include 'vues/v_message.php';
+        }
+        $fiches = $pdo->getFiches();
+        include('vues/v_listFiche.php');
+        break;
 }

@@ -40,9 +40,7 @@
                             <p class="text-muted mb-0">
                                 <?php echo htmlspecialchars($description) ?>
                             </p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <div class="badge badge-danger px-3 rounded-pill font-weight-normal">Like</div>
-                            </div>
+                            <a class="btn btn-info" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>">J'aime</a> <?= $likes ?>
                         </div>
                     </div>
                 </div>
