@@ -10,6 +10,7 @@
  */
 
 ?>
+
 <div id="accueil">
     <h2>
         Retrouver toutes les fiches !
@@ -21,10 +22,10 @@
         <div class="row">
             <ul>
                 <form id="form" method="post" action="index.php?uc=gererFiche&action=getFicheByCategorie">
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="1"> developpement<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="2"> actuweb<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="3"> mobile<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="4"> jeux<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="1" id="dev"> developpement<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="2" id="idactuweb"> idactuweb<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="3" id="mobile"> mobile<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="4" id="jeux"> jeux<br>
                     <button type="submit" class="text-dark" class="btn btn-lg btn-primary btn-block">valider categorie</button>
                 </form>
             </ul>
@@ -84,6 +85,7 @@
                             </div>
                         </div>
                         <!-- End -->
+
             <?php
                     }
                 }
