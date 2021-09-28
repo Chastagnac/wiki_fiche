@@ -11,7 +11,7 @@
 
 ?>
 
-<form role="form" method="post" action="index.php?uc=gererFiche&action=insererFiche">
+<form role="form" method="post" action="index.php?uc=gererFiche&action=insert">
     <fieldset>
         <div class="form-group">
             <div class="input-group">
