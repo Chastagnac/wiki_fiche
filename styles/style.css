@@ -75,7 +75,9 @@ body{
 	margin:0;
 	color:#27282b;
 	background:#d3d3d3;
-	font:600 16px/18px 'Open Sans',sans-serif;
+	font-family: 'poppins', sans-serif !important;
+
+    line-height: 1.333;
 }
 *,:after,:before{box-sizing:border-box}
 .clearfix:after,.clearfix:before{content:'';display:table}

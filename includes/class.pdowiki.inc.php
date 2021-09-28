@@ -30,12 +30,13 @@
 class PdoWiki
 {
 
-    private static $serveur = 'mysql:host=91.234.194.37:3306';
-    private static $bdd = 'dbname=chastagnac_wiki_fiche';
-    private static $user = 'chastagnac';
-    private static $mdp = 'Ju60Dzc5y4';
+    private static $serveur = 'mysql:host=localhost';
+    private static $bdd = 'dbname=wiki_fiche';
+    private static $user = 'root';
+    private static $mdp = '';
     private static $monPdo;
     private static $monPdoWiki = null;
+
 
     /**
      * Constructeur privé, crée l'instance de PDO qui sera sollicitée

@@ -29,6 +29,7 @@ switch ($action) {
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         $contenu = filter_input(INPUT_POST, 'contenu', FILTER_SANITIZE_STRING);
         checkFiche($libelle, $description, $contenu);
+        var_dump(nbErreurs());
         if (nbErreurs() !== 0) {
             include 'vues/v_erreurs.php';
             include 'vues/v_creerFiche.php';
@@ -58,8 +59,11 @@ switch ($action) {
         }
         $fiches = $pdo->getFiches();
         include('vues/v_listFiche.php');
+
     case 'getFicheByCategorie':
+        // Vérifie si on récupere bien des idcateg dans la validation des checkboxs
         if (isset($_POST['idcateg'])) {
+            // Parcours les idcategories et recupère les fiches sous un tableau
             foreach ($_POST['idcateg'] as $idCategorie) {
                 $fiches[] = $pdo->getFicheByCategorie($idCategorie);
             }
@@ -67,5 +71,12 @@ switch ($action) {
             header("Location: index.php?uc=gererFiche&action=selectionnerFiche");
         }
         include 'vues/v_listFiche.php';
+        // Parcour les idcateg et coche la case qui à était cochée précedamment
+        foreach ($_POST['idcateg'] as $idCategorie) { ?>
+            <script type="text/javascript">
+                document.getElementById(<?php echo $idCategorie; ?>).checked = true;
+            </script>
+        <?php
+        }
         break;
 }
