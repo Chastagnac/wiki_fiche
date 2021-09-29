@@ -319,8 +319,8 @@ class PdoWiki
     function register($prenom, $nom, $login, $mdp, $mail)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'INSERT INTO `compte`(`id`, `prenom`, `nom`, `login`, `mdp`, `mail`) '
-                . 'VALUES (DEFAULT, :unPrenom, :unNom, :unLogin, :unMdp, :unMail)'
+            'INSERT INTO `compte`(`id`, `prenom`, `nom`, `login`, `mdp`, `mail`, `datecreation`) '
+                . 'VALUES (DEFAULT, :unPrenom, :unNom, :unLogin, :unMdp, :unMail, DATE(NOW()))'
         );
         $requetePrepare->bindParam(':unPrenom', $prenom, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unNom', $nom, PDO::PARAM_STR);
