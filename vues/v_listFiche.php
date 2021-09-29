@@ -29,6 +29,29 @@
                     <button type="submit" class="text-dark" class="btn btn-lg btn-primary btn-block">valider categorie</button>
                 </form>
             </ul>
+            <form id="myForm" role="form" method="post" action="index.php?uc=gererFiche&action=Rechercher">
+                <label for="terme"> Entrez un tritre d'articlde :</label>
+                <input type="text" name="terme" id="terme">
+                <br>
+                <span id="error"></span>
+                <br>
+                <button type="submit" alt="Lancer la recherche!">Rechercher</button>
+            </form>
+
+            <script type="text/javascript">
+                let myForm = document.getElementById('myForm');
+
+                myForm.addEventListener('submit', function(e) {
+                    let myInput = document.getElementById('terme');
+
+                    if (myInput.value.trim() == "") {
+                        let myError = document.getElementById('error');
+                        myError.innerHTML = "Le champ recherche d'article doit être rempli.";
+                        myError.style.color = 'red';
+                        e.preventDefault();
+                    }
+                });
+            </script>
             <!-- Gallery item -->
             <?php
             $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
@@ -85,7 +108,6 @@
                             </div>
                         </div>
                         <!-- End -->
-
             <?php
                     }
                 }

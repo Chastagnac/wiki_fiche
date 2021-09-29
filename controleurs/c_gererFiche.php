@@ -68,4 +68,9 @@ switch ($action) {
         }
         include 'vues/v_listFiche.php';
         break;
+    case 'Rechercher':
+        $libelleFiche = $_POST['terme'] . "%";
+        $fiches = $pdo->getFicheBySearch($libelleFiche);
+        include 'vues/v_listFiche.php';
+        break;
 }

@@ -158,6 +158,56 @@ class PdoWiki
 
     /**
      * Retourne chaque fiche dans un tableau associative
+     * $titre Titre de larticle
+     *
+     * @return null
+     */
+    public function getFicheBySearch($titre)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'SELECT fiche.id AS id, fiche.idcategorie AS idcategorie, fiche.idcompte AS idcompte, '
+                . 'fiche.libelle AS libelle, '
+                . 'fiche.description AS description, '
+                . 'fiche.contenu AS contenu, '
+                . 'fiche.datemodif AS datemodif, '
+                . 'fiche.datecreation AS datecreation, '
+                . 'fiche.nblike AS nblike '
+                . 'FROM fiche '
+                . 'WHERE libelle LIKE :titre '
+                . 'ORDER BY fiche.datecreation'
+        );
+        $requetePrepare->bindParam(':titre', $titre, PDO::PARAM_STR);
+
+        $requetePrepare->execute();
+        return $requetePrepare->fetchAll();
+        $fiches = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+            $id = $laLigne['id'];
+            $idcategorie = $laLigne['idcategorie'];
+            $idcompte = $laLigne['idcompte'];
+            $libelle = $laLigne['libelle'];
+            $description = $laLigne['description'];
+            $contenu = $laLigne['contenu'];
+            $datemodif = $laLigne['datemodif'];
+            $datecreation = $laLigne['datecreation'];
+            $nblike = $laLigne['nblike'];
+            $fiches[] = array(
+                'id'            => $id,
+                'idcategorie'   => $idcategorie,
+                'idcompte'      => $idcompte,
+                'libelle'       => $libelle,
+                'description'   => $description,
+                'contenu    '   => $contenu,
+                'datemodif'     => $datemodif,
+                'datecreation'  => $datecreation,
+                'nblike'        => $nblike
+            );
+        }
+        return $fiches;
+    }
+
+    /**
+     * Retourne chaque fiche dans un tableau associative
      *
      *
      * @return null
