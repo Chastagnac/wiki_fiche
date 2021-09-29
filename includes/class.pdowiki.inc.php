@@ -294,7 +294,7 @@ class PdoWiki
         $idCompte = $_SESSION['idCompte'];
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'INSERT INTO `fiche`(`id`, `idcategorie`, `idcompte`, `libelle`, `description`, `contenu`, `datemodif`, `datecreation`, `nblike`) '
-                . 'VALUES (DEFAULT, :idcategorie, :idCompte, :libelle, :description, :contenu, DEFAULT, DEFAULT, DEFAULT)'
+                . 'VALUES (DEFAULT, :idcategorie, :idCompte, :libelle, :description, :contenu, DEFAULT, NOW(), DEFAULT)'
         );
         $requetePrepare->bindParam(':idcategorie', $idcategorie, PDO::PARAM_INT);
         $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_INT);
