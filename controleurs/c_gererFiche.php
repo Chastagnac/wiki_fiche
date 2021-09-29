@@ -29,13 +29,14 @@ switch ($action) {
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         $contenu = filter_input(INPUT_POST, 'contenu', FILTER_SANITIZE_STRING);
         checkFiche($libelle, $description, $contenu);
-        var_dump(nbErreurs());
         if (nbErreurs() !== 0) {
             include 'vues/v_erreurs.php';
             include 'vues/v_creerFiche.php';
         } else {
             $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu);
             include 'vues/v_successful.php';
+            $fiches = $pdo->getFiches();
+            include('vues/v_listFiche.php');
         }
         break;
 
