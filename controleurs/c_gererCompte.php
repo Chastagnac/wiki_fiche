@@ -24,11 +24,25 @@ switch ($action) {
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
         $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
         checkModifCompte($nom, $prenom, $mail);
-        if(nbErreurs() != 0) {
+        if (nbErreurs() != 0) {
             include 'vues/v_erreurs.php';
             include('vues/v_mesInformations.php');
         } else {
             $pdo->updateInfosCompte($idCompte, $mail, $nom, $prenom);
+            include('vues/v_successful.php');
+            include('vues/v_mesInformations.php');
+        }
+        break;
+    case 'changerMdp':
+        $lastpswd = filter_input(INPUT_POST, 'lastpswd', FILTER_SANITIZE_STRING);
+        $newpswd = filter_input(INPUT_POST, 'newpswd', FILTER_SANITIZE_STRING);
+        $confirmpswd = filter_input(INPUT_POST, 'confirmpswd', FILTER_SANITIZE_STRING);
+        checkNewPassword($infosCompte['mdp'], $lastpswd, $newpswd, $confirmpswd);
+        if (nbErreurs() != 0) {
+            include 'vues/v_erreurs.php';
+            include('vues/v_mesInformations.php');
+        } else {
+            $pdo->updateMdpCompte($idCompte, $newpswd);
             include('vues/v_successful.php');
             include('vues/v_mesInformations.php');
         }

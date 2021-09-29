@@ -30,6 +30,10 @@
                 <input type="checkbox" class="form-check-input" id="checkchange" onclick="checkbox()">
                 <label class="form-check-label" for="exampleCheck1">Modifier les informations</label>
             </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="checkchange2" onclick="checkbox2()">
+                <label class="form-check-label" for="exampleCheck1">Modifier le mot de passe</label>
+            </div>
         </div>
         <!-- Modification du Compte -->
     </div>
@@ -51,6 +55,23 @@
         <button type="text" class="btn btn-primary">Valider</button>
     </div>
 </form>
+<form id="formulaire2" style="display : none;" role="form" method="post" action="index.php?uc=gererCompte&action=changerMdp">
+    <div class="p-4">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Ancien mot de passe :</label>
+            <input type="password" class="form-control" name="lastpswd" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez l'ancien mot de passe">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Nouveau mot de passe</label>
+            <input type="password" class="form-control" name="newpswd" id="exampleInputPassword1" placeholder="Entrez le nouveaux mot de passe">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Confirmer le mot de passe :</label>
+            <input type="password" class="form-control" name="confirmpswd" id="exampleInputPassword1" placeholder="Confirmer le nouveau mot de passe">
+        </div>
+        <button type="text" class="btn btn-success">Valider</button>
+    </div>
+</form>
 <script>
     var checkBox = document.getElementById("checkchange");
     var form = document.getElementById("formulaire");
@@ -60,6 +81,16 @@
             form.style.display = "block";
         } else {
             form.style.display = "none";
+        }
+    }
+    var checkBox2 = document.getElementById("checkchange2");
+    var form2 = document.getElementById("formulaire2");
+
+    function checkbox2() {
+        if (checkBox2.checked == true) {
+            form2.style.display = "block";
+        } else {
+            form2.style.display = "none";
         }
     }
 </script>

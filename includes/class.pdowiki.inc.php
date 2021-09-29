@@ -358,6 +358,26 @@ class PdoWiki
     }
 
     /**
+     * Enregistre le compte dans la base de donnée
+     *
+     * @param String $mdp        Nouveau Mdp du compte
+     * @param String $id         id du compte
+     *
+     * @return null
+     */
+    function updateMdpCompte($idCompte, $newpswd)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'UPDATE `compte` SET compte.mdp = :unMdp, '
+                . 'compte.datemodif = DATE(NOW())'
+                . 'WHERE id = :idCompte'
+        );
+        $requetePrepare->bindParam(':unMdp', $newpswd, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    /**
      * Like la fiche dans la base de donnée
      *
      * @param String $idFiche       id de la fiche
