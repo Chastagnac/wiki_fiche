@@ -36,7 +36,7 @@ switch ($action) {
         break;
     case 'register':
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
-        $prenom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
         $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
         $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
         $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);

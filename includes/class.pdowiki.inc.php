@@ -97,14 +97,26 @@ class PdoWiki
         return $requetePrepare->fetch();
     }
 
-    public function getNomPrenomCompte($id)
+
+
+    /**
+     * Retourne les informations d'un compte
+     *
+     * @param String $id   id du compte
+     *
+     * @return l'id, le nom, le prénom, le mail, le mdp et la date de création sous la forme d'un tableau associatif
+     */
+    public function getInfosCompteById($idCompte)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'SELECT compte.prenom, compte.nom '
+            'SELECT compte.id AS id, compte.nom AS nom, '
+                . 'compte.prenom AS prenom, compte.mail AS mail, '
+                . 'compte.mdp AS mdp, compte.datecreation, '
+                . 'compte.datemodif AS datemodif '
                 . 'FROM compte '
-                . 'WHERE compte.id = :unId '
+                . 'WHERE compte.id = :unId'
         );
-        $requetePrepare->bindParam(':unId', $id, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unId', $idCompte, PDO::PARAM_STR);
         $requetePrepare->execute();
         return $requetePrepare->fetch();
     }
@@ -163,7 +175,7 @@ class PdoWiki
      *
      * @return null
      */
-     public function getFicheByCategorie($idcategorie)
+    public function getFicheByCategorie($idcategorie)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'SELECT fiche.id AS id, fiche.idcategorie AS idcategorie, fiche.idcompte AS idcompte, '
@@ -205,7 +217,55 @@ class PdoWiki
         }
         return $fiches;
     }
-    
+
+    /**
+     * Retourne chaque fiche dans un tableau associative
+     *
+     *
+     * @return null
+     */
+    public function getFichesByCompte($idCompte)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'SELECT fiche.id AS id, fiche.idcategorie AS idcategorie, fiche.idcompte AS idcompte, '
+                . 'fiche.libelle AS libelle, '
+                . 'fiche.description AS description, '
+                . 'fiche.contenu AS contenu, '
+                . 'fiche.datemodif AS datemodif, '
+                . 'fiche.datecreation AS datecreation, '
+                . 'fiche.nblike AS nblike '
+                . 'FROM fiche '
+                . 'WHERE fiche.idcompte = :idCompte '
+                . 'ORDER BY fiche.datecreation'
+        );
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $requetePrepare->fetchAll();
+        $fiches = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+            $id = $laLigne['id'];
+            $idcategorie = $laLigne['idcategorie'];
+            $idcompte = $laLigne['idcompte'];
+            $libelle = $laLigne['libelle'];
+            $description = $laLigne['description'];
+            $contenu = $laLigne['contenu'];
+            $datemodif = $laLigne['datemodif'];
+            $datecreation = $laLigne['datecreation'];
+            $nblike = $laLigne['nblike'];
+            $fiches[] = array(
+                'id'            => $id,
+                'idcategorie'   => $idcategorie,
+                'idcompte'      => $idcompte,
+                'libelle'       => $libelle,
+                'description'   => $description,
+                'contenu    '   => $contenu,
+                'datemodif'     => $datemodif,
+                'datecreation'  => $datecreation,
+                'nblike'        => $nblike
+            );
+        }
+        return $fiches;
+    }
 
     /**
      * Retourne 1 fiche dans un tableau associative
@@ -267,6 +327,33 @@ class PdoWiki
         $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMdp', $mdp, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMail', $mail, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    /**
+     * Enregistre le compte dans la base de donnée
+     *
+     * @param String $nom        Nom du compte
+     * @param String $prenom     Prénom du compte
+     * @param String $login        Login pour la connexion au compte
+     * @param String $mdp        Mdp du compte
+     * @param String $mail        mail du compte
+     * @param String $dateCreation        Mdp du compte
+     *
+     * @return null
+     */
+    function updateInfosCompte($idCompte, $mail, $nom, $prenom)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'UPDATE `compte` SET compte.prenom = :unPrenom, '
+                . 'compte.nom = :unNom, compte.mail = :unMail, '
+                . 'compte.datemodif = DATE(NOW())'
+                . 'WHERE id = :idCompte'
+        );
+        $requetePrepare->bindParam(':unPrenom', $prenom, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unNom', $nom, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMail', $mail, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
 
