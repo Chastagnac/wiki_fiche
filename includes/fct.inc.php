@@ -190,8 +190,7 @@ function nbErreurs()
  */
 function checkFiche($libelle, $description, $contenu)
 {
-    if ($libelle == "" || $description == "" || $contenu == "")
-    {
+    if ($libelle == "" || $description == "" || $contenu == "") {
         ajouterErreur('Les champs ne peuvent pas être vide');
     }
 }
@@ -207,8 +206,27 @@ function checkFiche($libelle, $description, $contenu)
  */
 function checkModifCompte($nom, $prenom, $mail)
 {
-    if ($nom == "" || $prenom == "" || $mail == "")
-    {
+    if ($nom == "" || $prenom == "" || $mail == "") {
         ajouterErreur('Les champs ne peuvent pas être vide');
+    }
+}
+
+/**
+ * Vérifie la validité des trois arguments : le libelle, la description et le contenu
+ * Des message d'erreurs sont ajoutés au tableau des erreurs
+ *
+ * @param String $nom        nom du compte
+ * @param String $prenom     prenom du compte
+ * @param String $mail       mail du compte
+ *
+ */
+function checkNewPassword($pswd, $lastpswd, $newpswd, $confirmpswd)
+{
+    if ($lastpswd == "" || $newpswd == "" || $confirmpswd == "" || $pswd == "") {
+        ajouterErreur('Les champs ne peuvent pas être vide');
+    } elseif ($pswd != $lastpswd) {
+        ajouterErreur('Veuillez renseigner le bon mot de passe');
+    } elseif ($newpswd != $confirmpswd) {
+        ajouterErreur('Les mots de passes ne sont pas identiques');
     }
 }

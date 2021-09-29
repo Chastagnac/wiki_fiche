@@ -9,6 +9,8 @@ switch ($action) {
         break;
     case 'validerModifications':
         $word = 'Les informations ont bien étaient enregistrés.';
+    case 'changerMdp':
+        $word = 'Le mot de passe à bien était modifé.';
 }
 ?>
 
