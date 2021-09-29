@@ -52,7 +52,13 @@
                             <li <?php if ($uc == 'gererFiche') { ?>class="active" <?php } ?>>
                                 <a href="index.php?uc=gererFiche&action=selectionnerFiche">
                                     <span class="glyphicon glyphicon-list-alt"></span>
-                                    Fiche
+                                    Les Fiches
+                                </a>
+                            </li>
+                            <li <?php if ($uc == 'gererCompte') { ?>class="active" <?php } ?>>
+                                <a href="index.php?uc=gererCompte&action=mesInformations">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    Mon compte
                                 </a>
                             </li>
                             <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>

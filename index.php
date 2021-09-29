@@ -34,6 +34,9 @@ switch ($uc) {
     case 'gererFiche':
         include 'controleurs/c_gererFiche.php';
         break;
+    case 'gererCompte':
+        include 'controleurs/c_gererCompte.php';
+        break;
     case 'etatFiche':
         include 'controleurs/c_etatFiche.php';
         break;
@@ -42,6 +45,6 @@ switch ($uc) {
         break;
     case 'deconnexion':
         include 'controleurs/c_deconnexion.php';
-        break;    
+        break;
 }
 require 'vues/v_pied.php';

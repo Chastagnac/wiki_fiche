@@ -54,7 +54,7 @@
                                 <p class="text-muted mb-0">
                                     <?php echo htmlspecialchars($description) ?>
                                 </p>
-                                <a class="btn btn-info" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>">J'aime</a> <?= $likes ?>
+                                <a class="glyphicon glyphicon-heart" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>"></a> <?= $likes ?>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                                     <p class="text-muted mb-0">
                                         <?php echo htmlspecialchars($description) ?>
                                     </p>
-                                    <a class="btn btn-info" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>">J'aime</a> <?= $likes ?>
+                                    <a class="btn btn-info" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>"></a> <?= $likes ?>
                                 </div>
                             </div>
                         </div>
