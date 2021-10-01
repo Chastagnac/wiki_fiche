@@ -72,12 +72,4 @@
                 </div>
             </div>
         <?php
-        } else {
-        ?>
-            <h1>
-                <img src="./images/logo.png" class="img-responsive center-block" alt="Logo Wiki fiche" title="Wiki fiche">
-            </h1>
-        <?php
         }
-
-        
