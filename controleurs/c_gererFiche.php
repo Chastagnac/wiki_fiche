@@ -80,4 +80,9 @@ switch ($action) {
         <?php
         }
         break;
+    case 'Rechercher':
+        $libelleFiche = $_POST['terme'] . "%";
+        $fiches = $pdo->getFicheBySearch($libelleFiche);
+        include 'vues/v_listFiche.php';
+        break;
 }
