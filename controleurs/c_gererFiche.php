@@ -16,7 +16,7 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
 switch ($action) {
     case 'selectionnerFiche':
-        $fiches = $pdo->getFiches();
+        $fiches = $pdo->getFiches('VA');
         include('vues/v_listFiche.php');
         break;
 
@@ -35,7 +35,7 @@ switch ($action) {
         } else {
             $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu);
             include 'vues/v_successful.php';
-            $fiches = $pdo->getFiches();
+            $fiches = $pdo->getFiches('VA');
             include('vues/v_listFiche.php');
         }
         break;
@@ -58,7 +58,7 @@ switch ($action) {
             $pdo->deleteLike($idCompte, $idFiche);
             include 'vues/v_message.php';
         }
-        $fiches = $pdo->getFiches();
+        $fiches = $pdo->getFiches('VA');
         include('vues/v_listFiche.php');
 
     case 'getFicheByCategorie':
