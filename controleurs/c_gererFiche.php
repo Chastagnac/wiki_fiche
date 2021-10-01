@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Gestion des frais
+ * Gestion des fiches
  *
  * PHP Version 7
  * 
@@ -77,7 +77,7 @@ switch ($action) {
             <script type="text/javascript">
                 document.getElementById(<?php echo $idCategorie; ?>).checked = true;
             </script>
-        <?php
+<?php
         }
         break;
     case 'Rechercher':
