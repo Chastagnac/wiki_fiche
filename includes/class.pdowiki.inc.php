@@ -78,20 +78,19 @@ class PdoWiki
     /**
      * Retourne les informations d'un compte
      *
-     * @param String $login Login du compte
+     * @param String $Email  Mail du compte
      * @param String $mdp   Mot de passe du compte
-     *
      * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
      */
-    public function getInfosCompte($login, $mdp)
+    public function getInfosCompte($email, $mdp)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'SELECT compte.id AS id, compte.nom AS nom, '
                 . 'compte.prenom AS prenom, compte.mail AS mail '
                 . 'FROM compte '
-                . 'WHERE compte.login = :unLogin AND compte.mdp = :unMdp'
+                . 'WHERE compte.mail = :unMail AND compte.mdp = :unMdp'
         );
-        $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMail', $email, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMdp', $mdp, PDO::PARAM_STR);
         $requetePrepare->execute();
         return $requetePrepare->fetch();
@@ -309,22 +308,20 @@ class PdoWiki
      *
      * @param String $nom        Nom du compte
      * @param String $prenom     Prénom du compte
-     * @param String $login        Login pour la connexion au compte
      * @param String $mdp        Mdp du compte
      * @param String $mail        mail du compte
      * @param String $dateCreation        Mdp du compte
      *
      * @return null
      */
-    function register($prenom, $nom, $login, $mdp, $mail)
+    function register($prenom, $nom, $mdp, $mail)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'INSERT INTO `compte`(`id`, `prenom`, `nom`, `login`, `mdp`, `mail`, `datecreation`) '
-                . 'VALUES (DEFAULT, :unPrenom, :unNom, :unLogin, :unMdp, :unMail, DATE(NOW()))'
+            'INSERT INTO `compte`(`id`, `prenom`, `nom`, `mdp`, `mail`, `datecreation`) '
+                . 'VALUES (DEFAULT, :unPrenom, :unNom, :unMdp, :unMail, DATE(NOW()))'
         );
         $requetePrepare->bindParam(':unPrenom', $prenom, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unNom', $nom, PDO::PARAM_STR);
-        $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMdp', $mdp, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMail', $mail, PDO::PARAM_STR);
         $requetePrepare->execute();
@@ -335,7 +332,6 @@ class PdoWiki
      *
      * @param String $nom        Nom du compte
      * @param String $prenom     Prénom du compte
-     * @param String $login        Login pour la connexion au compte
      * @param String $mdp        Mdp du compte
      * @param String $mail        mail du compte
      * @param String $dateCreation        Mdp du compte

@@ -19,9 +19,9 @@ switch ($action) {
         include 'vues/v_connexion.php';
         break;
     case 'valideConnexion':
-        $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
+        $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
         $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
-        $compte = $pdo->getInfosCompte($login, $mdp);
+        $compte = $pdo->getInfosCompte($mail, $mdp);
         if (is_array($compte)) {
             $id = $compte['id'];
             $nom = $compte['nom'];
@@ -29,7 +29,7 @@ switch ($action) {
             connecter($id, $nom, $prenom);
             header('Location: index.php');
         } else {
-            ajouterErreur('Login ou mot de passe incorrect');
+            ajouterErreur('Email ou mot de passe incorrect');
             include 'vues/v_erreurs.php';
             include 'vues/v_connexion.php';
         }
@@ -37,11 +37,10 @@ switch ($action) {
     case 'register':
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
-        $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
         $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
         $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
         $mdp2 = filter_input(INPUT_POST, 'mdp2', FILTER_SANITIZE_STRING);
-        valideEnregistrement($nom, $prenom, $login, $mail, $mdp, $mdp2);
+        valideEnregistrement($nom, $prenom, $mail, $mdp, $mdp2);
         if (nbErreurs() != 0) {
             include 'vues/v_erreurs.php';
             include 'vues/v_connexion.php';
@@ -50,7 +49,6 @@ switch ($action) {
             $pdo->register(
                 $prenom,
                 $nom,
-                $login,
                 $mdp,
                 $mail
             );

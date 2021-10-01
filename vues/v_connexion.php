@@ -1,66 +1,75 @@
-<?php
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link href="../styles/stylesPages/login.css" rel="stylesheet">
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+</head>
 
-/**
- * Vue Connexion
- *
- * PHP Version 7
- * @category  Projet
- * @package   Wiki Fiche
- * @link      http://www.php.net/manual/fr/book.pdo.php PHP Data Objects sur php.net
- */
-?>
-<div class="login-wrap">
-    <div class="login-html">
-        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">S'identifier</label>
-        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Inscription</label>
-        <div class="login-form">
-            <form role="form" method="post" action="index.php?uc=connexion&action=valideConnexion">
-                <fieldset>
-                    <!-- connexion -->
-                    <div class="sign-in-htm">
-                        <div class="group"><br>
-                            <input id="user" placeholder="Login" name="login" type="text" maxlength="45" class="input">
-                        </div>
-                        <div class="group">
-                            <input id="pass" placeholder="Mot de passe" name="mdp" class="input" data-type="password" maxlength="45">
-                        </div>
-                        <div class="group">
-                            <input type="submit" class="button" value="Connexion">
-                        </div>
-                        <div class="hr"></div>
-                        <div class="foot-lnk">
-                            <a href="#forgot">Mot de passe oublié ?</a>
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="row full-height justify-content-center">
+                <div class="col-12 text-center align-self-center py-5">
+                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                        <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                        <label for="reg-log"></label>
+                        <div class="card-3d-wrap mx-auto">
+                            <div class="card-3d-wrapper">
+                                <div class="card-front">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <form role="form" method="post" action="index.php?uc=connexion&action=valideConnexion">
+                                                <h4 class="mb-4 pb-3">Se connecter</h4>
+                                                <div class="form-group">
+                                                    <input type="text" name="mail" class="form-style" placeholder="Votre email" id="logemail" autocomplete="off">
+                                                    <i class="iconify" data-icon="ic:sharp-alternate-email"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="mdp" class="form-style" placeholder="Votre mot de passe" id="logpass" autocomplete="off">
+                                                    <i class="iconify" data-icon="uil:lock-alt"></i>
+                                                </div>
+                                                <input type="submit" class="btn mt-4" value="Connexion">
+                                                <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Mot de passe oublié ?</a></p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <form role="form" method="post" action="index.php?uc=connexion&action=register">
+                                                <br>
+                                                <h4 class="mb-4 pb-3">Inscription</h4>
+                                                <div class="form-group mt-2">
+                                                    <input type="text" name="mail" class="form-style" placeholder="Email" name="Votre mail" maxlength="45">
+                                                    <i class="iconify" data-icon="ic:sharp-alternate-email"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="text" name="nom" class="form-style" placeholder="Votre nom" id="logname" autocomplete="off">
+                                                    <i class="iconify" data-icon="ant-design:user-outlined"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="text" name="prenom" class="form-style" placeholder="Votre prénom" id="logemail" autocomplete="off">
+                                                    <i class="iconify" data-icon="ant-design:user-outlined"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="mdp" class="form-style" placeholder="Votre mot de passe" id="logpass" autocomplete="off">
+                                                    <i class="iconify" data-icon="carbon:password"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="mdp2" class="form-style" placeholder="Confirmez votre mot de passe" id="logpass" autocomplete="off">
+                                                    <i class="iconify" data-icon="carbon:password"></i>
+                                                </div>
+                                                <input type="submit" class="btn mt-4" value="S'inscrire">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </fieldset>
-            </form>
-            <!-- Inscription -->
-            <form role="form" method="post" action="index.php?uc=connexion&action=register">
-                <fieldset>
-                    <div class="sign-up-htm">
-                        <div class="group"><br>
-                            <input id="surname" type="text" class="input" placeholder="Nom" name="nom" maxlength="45">
-                        </div>
-                        <div class="group">
-                            <input id="name" type="text" class="input" placeholder="Prénom" name="prenom" maxlength="45">
-                        </div>
-                        <div class="group">
-                            <input id="user" type="text" class="input" placeholder="Login" name="login" maxlength="45">
-                        </div>
-                        <div class="group">
-                            <input id="pass" type="password" class="input" data-type="Password" placeholder="Mot de passe" name="mdp" maxlength="45">
-                        </div>
-                        <div class="group">
-                            <input id="pass" type="password" class="input" data-type="Password"  placeholder="Répeter le mot de passe" name="mdp2" maxlength="45">
-                        </div>
-                        <div class="group">
-                            <input id="pass" type="text" class="input" placeholder="Email" name="mail" maxlength="45">
-                        </div>
-                        <div class="group">
-                            <input type="submit" class="button" value="S'inscrire">
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- partial -->
