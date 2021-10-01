@@ -24,13 +24,36 @@
         <div class="row">
             <ul>
                 <form id="form" method="post" action="index.php?uc=gererFiche&action=getFicheByCategorie">
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="1" id="1"> developpement<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="2" id="2"> actuweb<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="3" id="3"> mobile<br>
-                    <input type="checkbox" name="idcateg[]" class="checkbox" value="4" id="4"> jeux<br>
-                    <button type="submit" class="text-dark" class="btn btn-lg btn-primary btn-block">valider categorie</button>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="1" id="dev"> Développement<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="2" id="idactuweb"> Actus Web<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="3" id="mobile"> Mobile<br>
+                    <input type="checkbox" name="idcateg[]" class="checkbox" value="4" id="jeux"> Jeux<br>
+                    <button type="submit" class="text-dark" class="btn btn-lg btn-primary btn-block">Valider categorie</button>
                 </form>
             </ul>
+            <form id="myForm" role="form" method="post" action="index.php?uc=gererFiche&action=Rechercher">
+                <label for="terme"> Entrez le titre d'une fiche</label>
+                <input type="text" name="terme" id="terme">
+                <br>
+                <span id="error"></span>
+                <br>
+                <button type="submit" alt="Lancer la recherche!">Rechercher</button>
+            </form>
+
+            <script type="text/javascript">
+                let myForm = document.getElementById('myForm');
+
+                myForm.addEventListener('submit', function(e) {
+                    let myInput = document.getElementById('terme');
+
+                    if (myInput.value.trim() == "") {
+                        let myError = document.getElementById('error');
+                        myError.innerHTML = "Le champ recherche d'article doit être rempli.";
+                        myError.style.color = 'red';
+                        e.preventDefault();
+                    }
+                });
+            </script>
             <!-- Gallery item -->
             <?php
             $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
@@ -87,7 +110,6 @@
                             </div>
                         </div>
                         <!-- End -->
-
             <?php
                     }
                 }

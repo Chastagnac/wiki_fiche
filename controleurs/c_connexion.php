@@ -34,6 +34,14 @@ switch ($action) {
             include 'vues/v_connexion.php';
         }
         break;
+    
+    case 'forgotPassword' :
+
+        
+            $infosCompte = $pdo->getInfo($_SESSION['idCompte']);
+            $infosCompte['mail']; 
+        include 'vues/v_forgotPassword.php';
+        break;
     case 'register':
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);

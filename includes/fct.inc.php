@@ -130,6 +130,31 @@ function valideEnregistrement($nom, $prenom, $mail, $mdp, $mdp2)
     }
 }
 
+/**
+ * Vérifie la validité des trois arguments : le mail, le mdp et le nouveau mdp
+ *
+ * Des message d'erreurs sont ajoutés au tableau des erreurs
+ *
+ * 
+ * @param String $mail      mail du compte
+ * @param String $mdp       ancien mdp du compte
+ * @param String $new_pass      nouveau mdp
+ *
+ * @return null
+ */
+function forgotPass($mail, $mdp, $new_pass)
+{
+    if (($mail || $mdp || $new_pass) == '') {
+        ajouterErreur('Les champs ne peuvent pas être vide');
+    } else {
+        if ($mdp == $new_pass) {
+            ajouterErreur('Les mots de passe ne doit pas correspondre à lancien mot de passe');
+        } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            ajouterErreur('L\'email n\'est pas valide');
+        }
+    }
+}
+
 
 /**
  * Vérifie si une date est inférieure d'un an à la date actuelle
