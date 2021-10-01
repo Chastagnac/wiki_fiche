@@ -4,7 +4,7 @@
  * Vue Accueil
  *
  * PHP Version 7
- * @category  PPE
+ * @category  G4
  * @package   Wiki Fiche
  * @link      http://www.php.net/manual/fr/book.pdo.php PHP Data Objects sur php.net
  */
@@ -41,18 +41,15 @@
                     <h2>Topic</h2>
                     <ul>
                         <form id="form" method="post" action="index.php?uc=gererFiche&action=getFicheByCategorie">
-                            <input type="checkbox" name="idcateg[]" class="checkbox" value="1" id="dev">Développement<br>
-                            <input type="checkbox" name="idcateg[]" class="checkbox" value="2" id="idactuweb">Actus Web<br>
-                            <input type="checkbox" name="idcateg[]" class="checkbox" value="3" id="mobile">Mobile<br>
-                            <input type="checkbox" name="idcateg[]" class="checkbox" value="4" id="jeux">Jeux<br>
+                            <input type="checkbox" name="idcateg[]" class="checkbox" value="1" id="1">Développement<br>
+                            <input type="checkbox" name="idcateg[]" class="checkbox" value="2" id="2">Actus Web<br>
+                            <input type="checkbox" name="idcateg[]" class="checkbox" value="3" id="3">Mobile<br>
+                            <input type="checkbox" name="idcateg[]" class="checkbox" value="4" id="4">Jeux<br>
                             <button type="submit" class="text-dark" class="btn btn-lg btn-primary btn-block">Valider categorie</button>
                         </form>
                     </ul>
                 </div>
-
             </div>
-
-
             <script type="text/javascript">
                 let myForm = document.getElementById('myForm');
 
@@ -68,7 +65,6 @@
                 });
             </script>
             <!-- Gallery item -->
-
             <?php
             $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
             if ($action !== 'getFicheByCategorie') {
@@ -98,8 +94,7 @@
                                     nbcommentaire
                                 </span>
                                 <span class="like">
-                                    <i class="fa fa-heart" aria-hidden="true"></i>
-                                    <?php echo htmlspecialchars($likes) ?>
+                                    <a class="fa fa-heart" style="text-decoration : none;" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>"></a> <?= $likes ?>
                                 </span>
                             </div>
                         </div>
@@ -122,7 +117,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <p><?php echo htmlspecialchars($datecreation) ?></p>
-                                <h1><?php echo htmlspecialchars($libelle) ?></h1>
+                                <h4> <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark">
+                                        <?php echo htmlspecialchars($libelle) ?></a></h4>
                             </div>
                             <div class="card-body">
                                 <?php echo htmlspecialchars($description) ?>

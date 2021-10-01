@@ -69,7 +69,7 @@ switch ($action) {
                 $fiches[] = $pdo->getFicheByCategorie($idCategorie);
             }
         } else {
-            header("Location: index.php?uc=gererFiche&action=selectionnerFiche");
+            //header("Location: index.php?uc=gererFiche&action=selectionnerFiche");
         }
         include 'vues/v_listFiche.php';
         // Parcour les idcateg et coche la case qui à était cochée précedamment

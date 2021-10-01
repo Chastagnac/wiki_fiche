@@ -111,7 +111,8 @@ class PdoWiki
             'SELECT compte.id AS id, compte.nom AS nom, '
                 . 'compte.prenom AS prenom, compte.mail AS mail, '
                 . 'compte.mdp AS mdp, compte.datecreation, '
-                . 'compte.datemodif AS datemodif '
+                . 'compte.datemodif AS datemodif, '
+                . 'compte.role AS role '
                 . 'FROM compte '
                 . 'WHERE compte.id = :unId'
         );

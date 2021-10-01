@@ -147,7 +147,7 @@ body{
     margin-right: 10px;
 }
 .card-footer .buttons .like{
-    color:red;
+    color:rgb(0, 0, 0);
 }
 @media screen and (max-width:640px){
     body{

@@ -254,3 +254,23 @@ function checkNewPassword($pswd, $lastpswd, $newpswd, $confirmpswd)
         ajouterErreur('Les mots de passes ne sont pas identiques');
     }
 }
+
+    /**
+     * Retourne le libelle de l'état du compte
+     * @param type $id
+     * @return retourne role du compte
+     */
+function getLibelleRole($id)
+{
+    switch ($id) {
+        case '1':
+            return "Admin";
+            break;
+        case '0':
+            return "Membre";
+            break;
+        case '-1':
+            return "Visiteur";
+            break;
+    }
+}
