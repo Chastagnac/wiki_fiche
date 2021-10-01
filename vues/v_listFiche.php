@@ -12,16 +12,15 @@
 ?>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte de blog - Frenchcoder</title>
-    <meta charset="utf-8">
     <link rel="stylesheet" href="../styles/stylesPages/vfiches.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <div id="accueil">
     <h2>Wiki Fiche</h2>
-    <button onclick="location.href='index.php?uc=gererFiche&action=insererFiche'" class="btn">Créer une fiche</button>
+    <?php if ($_SESSION['role'] != '-1') { ?>
+        <button onclick="location.href='index.php?uc=gererFiche&action=insererFiche'" class="btn">Créer une fiche</button>
+    <?php
+    } ?>
 </div>
 <script src="../js/app.js"></script>
 <form id="myForm" role="form" method="post" action="index.php?uc=gererFiche&action=Rechercher">
@@ -82,7 +81,10 @@
                     <div class="card">
                         <div class="card-header">
                             <p><?php echo htmlspecialchars($datecreation) ?></p>
-                            <h1><?php echo htmlspecialchars($libelle) ?></h1>
+                            <?php if ($_SESSION['role'] != '-1') { ?>
+                                <h4> <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark">
+                                        <?php echo htmlspecialchars($libelle) ?></a></h4> <?php
+                                                                                        } else { ?> <h1><?php echo htmlspecialchars($libelle) ?></h1><?php } ?>
                         </div>
                         <div class="card-body">
                             <?php echo htmlspecialchars($description) ?>
@@ -117,8 +119,18 @@
                         <div class="card">
                             <div class="card-header">
                                 <p><?php echo htmlspecialchars($datecreation) ?></p>
-                                <h4> <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark">
-                                        <?php echo htmlspecialchars($libelle) ?></a></h4>
+                                <?php
+                                if ($_SESSION['role'] != '-1') { ?>
+                                    <h4>
+                                        <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark"><?php echo htmlspecialchars($libelle) ?></a>
+                                    </h4>
+                                <?php
+                                } else { ?>
+                                    <h1>
+                                        <?php echo htmlspecialchars($libelle) ?>
+                                    </h1>
+                                <?php
+                                } ?>
                             </div>
                             <div class="card-body">
                                 <?php echo htmlspecialchars($description) ?>

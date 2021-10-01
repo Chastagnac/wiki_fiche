@@ -30,11 +30,12 @@ function estConnecte()
  *
  * @return null
  */
-function connecter($idCompte, $nom, $prenom)
+function connecter($idCompte, $nom, $prenom, $role)
 {
     $_SESSION['idCompte'] = $idCompte;
     $_SESSION['nom'] = $nom;
     $_SESSION['prenom'] = $prenom;
+    $_SESSION['role'] = $role;
 }
 
 /**

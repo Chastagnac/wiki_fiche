@@ -2,10 +2,63 @@
     <meta charset="UTF-8">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
     <link href="../styles/stylesPages/login.css" rel="stylesheet">
+    <link href="../styles/stylesPages/animation.css" rel="stylesheet">
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
 </head>
 
 <body>
+<div class="stars">
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+</div>
     <div class="section">
         <div class="container">
             <div class="row full-height justify-content-center">
@@ -29,7 +82,9 @@
                                                     <i class="iconify" data-icon="uil:lock-alt"></i>
                                                 </div>
                                                 <input type="submit" class="btn mt-4" value="Connexion">
-                                                <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Mot de passe oublié ?</a></p>
+                                                <p class="mb-0 mt-4 text-center"><a href="index.php?uc=connexion&action=visiteur" class="link">Que de passage ?</a></p>
+                                                <p class="mb-0 mt-4 text-center"><a href="index.php?uc=connexion&action=forgotPassword" class="link">Mot de passe oublié ?</a></p>
+
                                             </form>
                                         </div>
                                     </div>
@@ -73,3 +128,5 @@
         </div>
     </div>
     <!-- partial -->
+
+ 
