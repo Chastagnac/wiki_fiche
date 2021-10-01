@@ -1,0 +1,17 @@
+
+.logomr {
+	margin : auto;
+	height: 35%;
+    margin: 20px;
+    float: left;
+}
+
+.roles {
+    text-align: center;
+    padding:3px;
+}
+.imgrole {
+    float: left;
+    height: 100%;
+    margin-right: 30px;
+}

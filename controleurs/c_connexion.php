@@ -18,6 +18,19 @@ switch ($action) {
     case 'demandeConnexion':
         include 'vues/v_connexion.php';
         break;
+    case 'visiteur':
+        $mail = "visiteur@gmail.com";
+        $mdp = "visiteur";
+        $compte = $pdo->getInfosCompte($mail, $mdp);
+        if (is_array($compte)) {
+            $id = $compte['id'];
+            $nom = $compte['nom'];
+            $prenom = $compte['prenom'];
+            $role = $compte['role'];
+            connecter($id, $nom, $prenom, $role);
+            header('Location: index.php');
+        }
+        break;
     case 'valideConnexion':
         $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
         $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
@@ -26,20 +39,19 @@ switch ($action) {
             $id = $compte['id'];
             $nom = $compte['nom'];
             $prenom = $compte['prenom'];
-            connecter($id, $nom, $prenom);
+            $role = $compte['role'];
+            connecter($id, $nom, $prenom, $role);
             header('Location: index.php');
         } else {
             ajouterErreur('Email ou mot de passe incorrect');
-            include 'vues/v_erreurs.php';
             include 'vues/v_connexion.php';
+            include 'vues/v_erreurs.php';
         }
         break;
-    
-    case 'forgotPassword' :
 
-        
-            $infosCompte = $pdo->getInfo($_SESSION['idCompte']);
-            $infosCompte['mail']; 
+    case 'forgotPassword':
+        $infosCompte = $pdo->getInfo($_SESSION['idCompte']);
+        $infosCompte['mail'];
         include 'vues/v_forgotPassword.php';
         break;
     case 'register':
@@ -50,10 +62,10 @@ switch ($action) {
         $mdp2 = filter_input(INPUT_POST, 'mdp2', FILTER_SANITIZE_STRING);
         valideEnregistrement($nom, $prenom, $mail, $mdp, $mdp2);
         if (nbErreurs() != 0) {
-            include 'vues/v_erreurs.php';
             include 'vues/v_connexion.php';
+            include 'vues/v_erreurs.php';
         } else {
-            
+
             $pdo->register(
                 $prenom,
                 $nom,

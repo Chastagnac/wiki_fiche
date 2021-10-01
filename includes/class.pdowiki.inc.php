@@ -86,7 +86,8 @@ class PdoWiki
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'SELECT compte.id AS id, compte.nom AS nom, '
-                . 'compte.prenom AS prenom, compte.mail AS mail '
+                . 'compte.prenom AS prenom, compte.mail AS mail, '
+                . 'compte.role AS role '
                 . 'FROM compte '
                 . 'WHERE compte.mail = :unMail AND compte.mdp = :unMdp'
         );
@@ -111,7 +112,8 @@ class PdoWiki
             'SELECT compte.id AS id, compte.nom AS nom, '
                 . 'compte.prenom AS prenom, compte.mail AS mail, '
                 . 'compte.mdp AS mdp, compte.datecreation, '
-                . 'compte.datemodif AS datemodif '
+                . 'compte.datemodif AS datemodif, '
+                . 'compte.role AS role '
                 . 'FROM compte '
                 . 'WHERE compte.id = :unId'
         );
@@ -127,7 +129,7 @@ class PdoWiki
      *
      * @return null
      */
-    public function getFiches()
+    public function getFiches($etat)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'SELECT fiche.id AS id, fiche.idcategorie AS idcategorie, fiche.idcompte AS idcompte, '
@@ -138,8 +140,10 @@ class PdoWiki
                 . 'fiche.datecreation AS datecreation, '
                 . 'fiche.nblike AS nblike '
                 . 'FROM fiche '
+                . 'WHERE fiche.etat = :etat '
                 . 'ORDER BY fiche.datecreation'
         );
+        $requetePrepare->bindParam(':etat', $etat, PDO::PARAM_STR);
         $requetePrepare->execute();
         return $requetePrepare->fetchAll();
         $fiches = array();

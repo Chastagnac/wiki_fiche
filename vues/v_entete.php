@@ -55,12 +55,25 @@
                                     Les Fiches
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'gererCompte') { ?>class="active" <?php } ?>>
-                                <a href="index.php?uc=gererCompte&action=mesInformations">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    Mon compte
-                                </a>
-                            </li>
+                            <?php if ($_SESSION['role'] == '1') { ?>
+                                <li <?php if ($uc == 'validation') { ?>class="active" <?php } ?>>
+                                    <a href="index.php?uc=validation&action=validerFiches">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        Valider les fiches
+                                    </a>
+                                </li>
+                            <?php
+                            } ?>
+                            <?php if ($_SESSION['role'] !== '-1') { ?>
+                                <li <?php if ($uc == 'gererCompte') { ?>class="active" <?php } ?>>
+                                    <a href="index.php?uc=gererCompte&action=mesInformations">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        Mon compte
+                                    </a>
+                                </li>
+                            <?php
+                            } ?>
+
                             <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
                                 <a href="index.php?uc=deconnexion&action=demandeDeconnexion">
                                     <span class="glyphicon glyphicon-log-out"></span>
