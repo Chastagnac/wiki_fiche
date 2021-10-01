@@ -319,6 +319,27 @@ class PdoWiki
         $requetePrepare->execute();
     }
 
+
+    /**
+     * Enregistre le nouveau mdp dans la base de donnée
+     *
+     *
+     * @param String $mdp        ancien Mdp du compte
+     * @param String $mail        mail du compte
+     * @param String $new_pass      nouveau mdp
+     *
+     * @return null
+     */
+    function forgotPassword($mail,$new_pass)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'INSERT INTO `compte.mdp`(`new_pass` WHERE mail == $new_pass) '
+                . 'VALUES (DEFAULT, :unMdp, :unMail)'
+        );
+        $requetePrepare->bindParam(':unMdp', $new_pass, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMail', $mail, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
     /**
      * Like la fiche dans la base de donnée
      *
