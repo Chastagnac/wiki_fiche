@@ -29,7 +29,8 @@
                         </div>
                         <div class="hr"></div>
                         <div class="foot-lnk">
-                            <a href="#forgot">Mot de passe oublié ?</a>
+                            <a href="index.php?uc=connexion&action=forgotPassword">Mot de passe oublié ?</a>
+                            </form>
                         </div>
                     </div>
                 </fieldset>
@@ -51,7 +52,7 @@
                             <input id="pass" type="password" class="input" data-type="Password" placeholder="Mot de passe" name="mdp" maxlength="45">
                         </div>
                         <div class="group">
-                            <input id="pass" type="password" class="input" data-type="Password"  placeholder="Répeter le mot de passe" name="mdp2" maxlength="45">
+                            <input id="pass" type="password" class="input" data-type="Password" placeholder="Répeter le mot de passe" name="mdp2" maxlength="45">
                         </div>
                         <div class="group">
                             <input id="pass" type="text" class="input" placeholder="Email" name="mail" maxlength="45">
