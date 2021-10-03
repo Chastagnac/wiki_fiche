@@ -16,7 +16,8 @@
     <div class="shadow-sm">
         <div>
             <h4 class="text-center">
-                <?php echo $theFiche['libelle']; ?></a></h4>
+                <?php echo $theFiche['libelle']; ?>
+                </a></h4>
             <p class="text-left">
                 <?php echo $theFiche['description']; ?>
             </p>
@@ -27,6 +28,9 @@
                 <?php echo $theFiche['datecreation']; ?>
             </p>
             <div class="text-right">
+                <?php if ($_SESSION['role'] == '1') { ?>
+                    <a href="index.php?uc=gererFiche&action=modifierFiche&id=<?php echo $theFiche['id']; ?>" class="glyphicon glyphicon-pencil" style="text-decoration : none;"></a>
+                <?php } ?>
                 <div class="badge badge-danger px-3 rounded-pill font-weight-normal">Like <?php echo $theFiche['nblike'] ?></div>
             </div>
         </div>

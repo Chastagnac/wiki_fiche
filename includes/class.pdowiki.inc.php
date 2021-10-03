@@ -346,18 +346,19 @@ class PdoWiki
      *
      * @return null
      */
-    function insertFiches($idcategorie, $idCompte, $libelle, $description, $contenu)
+    function insertFiches($idcategorie, $idCompte, $libelle, $description, $contenu, $etat)
     {
         $idCompte = $_SESSION['idCompte'];
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'INSERT INTO `fiche`(`id`, `idcategorie`, `idcompte`, `libelle`, `description`, `contenu`, `datemodif`, `datecreation`, `nblike`) '
-                . 'VALUES (DEFAULT, :idcategorie, :idCompte, :libelle, :description, :contenu, DEFAULT, NOW(), DEFAULT)'
+            'INSERT INTO `fiche`(`id`, `idcategorie`, `idcompte`, `libelle`, `description`, `contenu`, `datemodif`, `datecreation`, `nblike`, `etat`) '
+                . 'VALUES (DEFAULT, :idcategorie, :idCompte, :libelle, :description, :contenu, DEFAULT, NOW(), DEFAULT, :unEtat)'
         );
         $requetePrepare->bindParam(':idcategorie', $idcategorie, PDO::PARAM_INT);
         $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_INT);
         $requetePrepare->bindParam(':libelle', $libelle, PDO::PARAM_STR);
         $requetePrepare->bindParam(':description', $description);
         $requetePrepare->bindParam(':contenu', $contenu, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unEtat', $etat, PDO::PARAM_STR_CHAR);
         $requetePrepare->execute();
     }
 
@@ -449,6 +450,27 @@ class PdoWiki
         );
         $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unEtat', $etat, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    /**
+     * Modifie une fiche
+     *
+     * @return null
+     */
+    function updateFiche($categorie, $libelle, $description, $contenu, $idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'UPDATE `fiche` SET fiche.idcategorie = :uneCateg, '
+            . 'fiche.libelle = :unLibelle, fiche.description= :uneDescription, '
+            . 'fiche.contenu= :unContenu, fiche.datemodif = DATE(NOW()) '
+            . 'WHERE fiche.id = :idFiche'
+        );
+        $requetePrepare->bindParam(':uneCateg', $categorie, PDO::PARAM_INT);
+        $requetePrepare->bindParam(':unLibelle', $libelle, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':uneDescription', $description, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unContenu', $contenu, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_INT);
         $requetePrepare->execute();
     }
 

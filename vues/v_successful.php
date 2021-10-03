@@ -13,6 +13,8 @@ switch ($action) {
         $word = 'Le mot de passe à bien était modifé.';
     case 'validation':
         $word = 'La fiche à bien été validée !';
+    case 'validerModification':
+        $word = 'La fiche à bien été modifiée !';
 }
 ?>
 
