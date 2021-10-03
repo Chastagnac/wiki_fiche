@@ -64,13 +64,23 @@
                                 </li>
                             <?php
                             } ?>
-
-                            <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
-                                <a href="index.php?uc=deconnexion&action=demandeDeconnexion">
-                                    <span class="glyphicon glyphicon-log-out"></span>
-                                    Déconnexion
-                                </a>
-                            </li>
+                            <?php if ($_SESSION['role'] !== '-1') { ?>
+                                <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
+                                    <a href="index.php?uc=deconnexion&action=demandeDeconnexion">
+                                        <span class="glyphicon glyphicon-log-out"></span>
+                                        Déconnexion
+                                    </a>
+                                </li>
+                            <?php
+                            } else { ?>
+                                <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
+                                    <a href="index.php?uc=deconnexion&action=demandeEnregistrement">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        S'enregistrer
+                                    </a>
+                                </li>
+                            <?php }
+                            ?>
                         </ul>
                     </div>
                 </div>

@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
             <div class="input-group">
-                <textarea class="form-control" name="contenu" type="text"></textarea>
+                <textarea class="form-control" name="contenu" type="text" style="width : 100%;"></textarea>
             </div>
             <div class="form-group">
                 <div class="input-group">
@@ -39,6 +39,7 @@
                     </select>
                 </div>
             </div>
-            <input class="btn btn-lg btn-success btn-block" type="submit" value="Publier">
+        </div>
+        <input class="btn btn-lg btn-success btn-block" type="submit" value="Publier">
     </fieldset>
 </form>

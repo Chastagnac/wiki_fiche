@@ -35,38 +35,41 @@
                     $etat = $fiche['etat']
             ?>
                     <div class="card">
-                            <div class="card-header">
-                                <p><?php echo htmlspecialchars($datecreation) ?></p>
-                                <p><?php echo getLibelleEtat($etat) ?></p>
-                                <?php
-                                if ($_SESSION['role'] != '-1') { ?>
-                                    <h4>
-                                        <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark"><?php echo htmlspecialchars($libelle) ?></a>
-                                    </h4>
-                                <?php
-                                } else { ?>
-                                    <h1>
-                                        <?php echo htmlspecialchars($libelle) ?>
-                                    </h1>
-                                <?php
-                                } ?>
-                            </div>
-                            <div class="card-body">
-                                <?php echo htmlspecialchars($description) ?>
-                            </div>
-                            <div class="card-footer">
-                                <div class="buttons">
-                                    <span class="comment">
-                                        <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                        nbcommentaire
-                                    </span>
-                                    <span class="like">
-                                        <i class="fa fa-heart" aria-hidden="true"></i>
-                                        <?php echo htmlspecialchars($likes) ?>
-                                    </span>
-                                </div>
+                        <div class="card-header">
+                            <p><?php echo htmlspecialchars($datecreation) ?></p>
+                            <p><?php echo getLibelleEtat($etat) ?></p>
+                            <?php
+                            if ($_SESSION['role'] != '-1') { ?>
+                                <h4>
+                                    <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark"><?php echo htmlspecialchars($libelle) ?></a>
+                                </h4>
+                            <?php
+                            } else { ?>
+                                <h1>
+                                    <?php echo htmlspecialchars($libelle) ?>
+                                </h1>
+                            <?php
+                            } ?>
+                        </div>
+                        <div class="card-body">
+                            <?php echo htmlspecialchars($description) ?>
+                        </div>
+                        <div class="card-footer">
+                            <div class="buttons">
+                                <span class="comment">
+                                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                    nbcommentaire
+                                </span>
+                                <span class="like">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                    <?php echo htmlspecialchars($likes) ?>
+                                </span>
                             </div>
                         </div>
+                        <div class="text-right">
+                            <a href="index.php?uc=gererFiche&action=modifierFiche&id=<?php echo $id; ?>" class="glyphicon glyphicon-pencil" style="text-decoration : none;"></a>
+                        </div>
+                    </div>
                     <!-- End -->
             <?php
                 }
