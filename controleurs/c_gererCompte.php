@@ -50,4 +50,8 @@ switch ($action) {
         $mesFiches = $pdo->getFichesByCompte($idCompte);
         include('vues/v_mesFiches.php');
         break;
+    case 'demandeEnregistrement':
+        deconnecter();
+        header('vues/v_connexion.php');
+        break;
 }

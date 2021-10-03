@@ -14,7 +14,6 @@ $idCompte = $_SESSION['idCompte'];
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $infosCompte = $pdo->getInfosCompteById($idCompte);
 $etatCompte = getEtatCompte($infosCompte['role']);
-var_dump($etatCompte);
 
 switch ($action) {
     case 'selectionnerFiche':
@@ -86,5 +85,26 @@ switch ($action) {
         $libelleFiche = $_POST['terme'] . "%";
         $fiches = $pdo->getFicheBySearch($libelleFiche);
         include 'vues/v_listFiche.php';
+        break;
+    case 'modifierFiche':
+        $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+        $fiche = $pdo->getTheFiche($idFiche);
+        include 'vues/v_modifierFiche.php';
+        break;
+    case 'validerModification':
+        $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_STRING);
+        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+        $contenu = filter_input(INPUT_POST, 'contenu', FILTER_SANITIZE_STRING);
+        $idCategorie = filter_input(INPUT_POST, 'categorie', FILTER_SANITIZE_NUMBER_INT);
+        checkFiche($libelle, $description, $contenu);
+        if (nbErreurs() !== 0) {
+            include 'vues/v_erreurs.php';
+            include 'vues/v_modifierFiche.php';
+        } else {
+            $pdo->updateFiche($idCategorie, $libelle, $description, $contenu, $idFiche);
+            include 'vues/v_successful.php';
+            header("Location: index.php?uc=gererFiche&action=visiterFiche&id=$idFiche");
+        }
         break;
 }

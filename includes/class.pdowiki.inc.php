@@ -454,6 +454,27 @@ class PdoWiki
     }
 
     /**
+     * Modifie une fiche
+     *
+     * @return null
+     */
+    function updateFiche($categorie, $libelle, $description, $contenu, $idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'UPDATE `fiche` SET fiche.idcategorie = :uneCateg, '
+            . 'fiche.libelle = :unLibelle, fiche.description= :uneDescription, '
+            . 'fiche.contenu= :unContenu, fiche.datemodif = DATE(NOW()) '
+            . 'WHERE fiche.id = :idFiche'
+        );
+        $requetePrepare->bindParam(':uneCateg', $categorie, PDO::PARAM_INT);
+        $requetePrepare->bindParam(':unLibelle', $libelle, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':uneDescription', $description, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unContenu', $contenu, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_INT);
+        $requetePrepare->execute();
+    }
+
+    /**
      * Enregistre le compte dans la base de donnée
      *
      * @param String $mdp        Nouveau Mdp du compte
