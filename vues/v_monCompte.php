@@ -5,7 +5,7 @@
     ?>
         <div class="header">
             <div class="row vertical-align">
-                <div class="col-md-5">
+            <div class="col-md-7">
                     <ul class="nav nav-pills pull-right" role="tablist">
                         <li <?php if ($action == 'mesInformations') { ?>class="active" <?php } ?>>
                             <a href="index.php?uc=gererCompte&action=mesInformations">
@@ -19,12 +19,15 @@
                                 Mes Fiches
                             </a>
                         </li>
-                        <li <?php if ($action == 'mesFichesLiker') { ?>class="active" <?php } ?>>
-                            <a href="index.php?uc=gererCompte&action=mesFichesLiker">
-                                <span class="glyphicon glyphicon-heart"></span>
-                                Mes Fiches liker
-                            </a>
-                        </li>
+                        <?php if ($_SESSION['role'] == '1') { ?>
+                            <li <?php if ($uc == 'validation') { ?>class="active" <?php } ?>>
+                                <a href="index.php?uc=validation&action=validerFiches">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    Valider les fiches
+                                </a>
+                            </li>
+                        <?php
+                        } ?>
                     </ul>
                 </div>
             </div>

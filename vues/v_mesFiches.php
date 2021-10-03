@@ -11,6 +11,10 @@
 
 ?>
 
+<head>
+    <link rel="stylesheet" href="../styles/stylesPages/vfiches.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
 <div class="container-fluid">
     <div class="px-lg-2">
         <div class="row">
@@ -27,20 +31,42 @@
                     $contenu = $fiche['contenu'];
                     $datemodif = $fiche['datemodif'];
                     $datecreation = $fiche['datecreation'];
-                    $likes = $fiche['nblike']
+                    $likes = $fiche['nblike'];
+                    $etat = $fiche['etat']
             ?>
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                        <div class="shadow-sm">
-                            <div class="p-4">
-                                <h4> <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark">
-                                        <?php echo htmlspecialchars($libelle) ?></a></h4>
-                                <p class="text-muted mb-0">
-                                    <?php echo htmlspecialchars($description) ?>
-                                </p>
-                                <a class="glyphicon glyphicon-heart"></a> <?= $likes ?>
+                    <div class="card">
+                            <div class="card-header">
+                                <p><?php echo htmlspecialchars($datecreation) ?></p>
+                                <p><?php echo getLibelleEtat($etat) ?></p>
+                                <?php
+                                if ($_SESSION['role'] != '-1') { ?>
+                                    <h4>
+                                        <a href="index.php?uc=gererFiche&action=visiterFiche&id=<?php echo $id; ?>" class="text-dark"><?php echo htmlspecialchars($libelle) ?></a>
+                                    </h4>
+                                <?php
+                                } else { ?>
+                                    <h1>
+                                        <?php echo htmlspecialchars($libelle) ?>
+                                    </h1>
+                                <?php
+                                } ?>
+                            </div>
+                            <div class="card-body">
+                                <?php echo htmlspecialchars($description) ?>
+                            </div>
+                            <div class="card-footer">
+                                <div class="buttons">
+                                    <span class="comment">
+                                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        nbcommentaire
+                                    </span>
+                                    <span class="like">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                        <?php echo htmlspecialchars($likes) ?>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <!-- End -->
             <?php
                 }

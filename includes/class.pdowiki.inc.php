@@ -138,7 +138,8 @@ class PdoWiki
                 . 'fiche.contenu AS contenu, '
                 . 'fiche.datemodif AS datemodif, '
                 . 'fiche.datecreation AS datecreation, '
-                . 'fiche.nblike AS nblike '
+                . 'fiche.nblike AS nblike, '
+                . 'fiche.etat AS etat '
                 . 'FROM fiche '
                 . 'WHERE fiche.etat = :etat '
                 . 'ORDER BY fiche.datecreation'
@@ -157,6 +158,7 @@ class PdoWiki
             $datemodif = $laLigne['datemodif'];
             $datecreation = $laLigne['datecreation'];
             $nblike = $laLigne['nblike'];
+            $etat = $laLigne['etat'];
             $fiches[] = array(
                 'id'            => $id,
                 'idcategorie'   => $idcategorie,
@@ -166,7 +168,8 @@ class PdoWiki
                 'contenu    '   => $contenu,
                 'datemodif'     => $datemodif,
                 'datecreation'  => $datecreation,
-                'nblike'        => $nblike
+                'nblike'        => $nblike,
+                'etat'          => $etat
             );
         }
         return $fiches;
@@ -286,7 +289,8 @@ class PdoWiki
                 . 'fiche.contenu AS contenu, '
                 . 'fiche.datemodif AS datemodif, '
                 . 'fiche.datecreation AS datecreation, '
-                . 'fiche.nblike AS nblike '
+                . 'fiche.nblike AS nblike, '
+                . 'fiche.etat AS etat '
                 . 'FROM fiche '
                 . 'WHERE fiche.idcompte = :idCompte '
                 . 'ORDER BY fiche.datecreation'
@@ -392,7 +396,7 @@ class PdoWiki
      *
      * @return null
      */
-    function forgotPassword($mail,$new_pass)
+    function forgotPassword($mail, $new_pass)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'INSERT INTO `compte.mdp`(`new_pass` WHERE mail == $new_pass) '
@@ -425,6 +429,26 @@ class PdoWiki
         $requetePrepare->bindParam(':unNom', $nom, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMail', $mail, PDO::PARAM_STR);
         $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    /**
+     * Modifie l'état d'une fiche 
+     *
+     * @param String $etat      Etat futur de la fiche
+     * @param String $idFiche   Id de la fiche 
+     *
+     * @return null
+     */
+    function updateEtatFiche($idFiche, $etat)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'UPDATE `fiche` SET fiche.etat = :unEtat, '
+                . 'fiche.datemodif = DATE(NOW()) '
+                . 'WHERE fiche.id = :idFiche '
+        );
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unEtat', $etat, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
 
