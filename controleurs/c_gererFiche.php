@@ -12,7 +12,9 @@
 
 $idCompte = $_SESSION['idCompte'];
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-
+$infosCompte = $pdo->getInfosCompteById($idCompte);
+$etatCompte = getEtatCompte($infosCompte['role']);
+var_dump($etatCompte);
 
 switch ($action) {
     case 'selectionnerFiche':
@@ -33,7 +35,7 @@ switch ($action) {
             include 'vues/v_erreurs.php';
             include 'vues/v_creerFiche.php';
         } else {
-            $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu);
+            $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu, $etatCompte);
             include 'vues/v_successful.php';
             $fiches = $pdo->getFiches('VA');
             include('vues/v_listFiche.php');
@@ -69,7 +71,7 @@ switch ($action) {
                 $fiches[] = $pdo->getFicheByCategorie($idCategorie);
             }
         } else {
-            //header("Location: index.php?uc=gererFiche&action=selectionnerFiche");
+            header("Location: index.php?uc=gererFiche&action=selectionnerFiche");
         }
         include 'vues/v_listFiche.php';
         // Parcour les idcateg et coche la case qui à était cochée précedamment

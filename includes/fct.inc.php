@@ -277,6 +277,26 @@ function getLibelleRole($id)
 }
 
 /**
+ * Retourne le libelle d'une possible fiche
+ * @param type $id
+ * @return retourne role du compte
+ */
+function getEtatCompte($id)
+{
+    switch ($id) {
+        case '1':
+            return "VA";
+            break;
+        case '0':
+            return "AT";
+            break;
+        case '-1':
+            return "RE";
+            break;
+    }
+}
+
+/**
  * Retourne le libelle de l'état d'une compte
  * @param type $id
  * @return retourne etat de la fiche

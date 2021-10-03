@@ -346,18 +346,19 @@ class PdoWiki
      *
      * @return null
      */
-    function insertFiches($idcategorie, $idCompte, $libelle, $description, $contenu)
+    function insertFiches($idcategorie, $idCompte, $libelle, $description, $contenu, $etat)
     {
         $idCompte = $_SESSION['idCompte'];
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'INSERT INTO `fiche`(`id`, `idcategorie`, `idcompte`, `libelle`, `description`, `contenu`, `datemodif`, `datecreation`, `nblike`) '
-                . 'VALUES (DEFAULT, :idcategorie, :idCompte, :libelle, :description, :contenu, DEFAULT, NOW(), DEFAULT)'
+            'INSERT INTO `fiche`(`id`, `idcategorie`, `idcompte`, `libelle`, `description`, `contenu`, `datemodif`, `datecreation`, `nblike`, `etat`) '
+                . 'VALUES (DEFAULT, :idcategorie, :idCompte, :libelle, :description, :contenu, DEFAULT, NOW(), DEFAULT, :unEtat)'
         );
         $requetePrepare->bindParam(':idcategorie', $idcategorie, PDO::PARAM_INT);
         $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_INT);
         $requetePrepare->bindParam(':libelle', $libelle, PDO::PARAM_STR);
         $requetePrepare->bindParam(':description', $description);
         $requetePrepare->bindParam(':contenu', $contenu, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unEtat', $etat, PDO::PARAM_STR_CHAR);
         $requetePrepare->execute();
     }
 
