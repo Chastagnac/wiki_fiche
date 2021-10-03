@@ -107,4 +107,11 @@ switch ($action) {
             header("Location: index.php?uc=gererFiche&action=visiterFiche&id=$idFiche");
         }
         break;
+    case 'suppression':
+        $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $pdo->deleteFiche($idFiche, $idCompte);
+        include 'vues/v_successful.php';
+        $fiches = $pdo->getFiches('VA');
+        include('vues/v_listFiche.php');
+        break;
 }

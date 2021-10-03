@@ -15,6 +15,8 @@ switch ($action) {
         $word = 'La fiche à bien été validée !';
     case 'validerModification':
         $word = 'La fiche à bien été modifiée !';
+        case 'suppression':
+            $word = 'La fiche à bien été supprimée ! ';
 }
 ?>
 

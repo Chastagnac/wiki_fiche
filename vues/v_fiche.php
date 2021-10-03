@@ -30,6 +30,7 @@
             <div class="text-right">
                 <?php if ($_SESSION['role'] == '1') { ?>
                     <a href="index.php?uc=gererFiche&action=modifierFiche&id=<?php echo $theFiche['id']; ?>" class="glyphicon glyphicon-pencil" style="text-decoration : none;"></a>
+                    <a href="index.php?uc=gererFiche&action=suppression&id=<?php echo $theFiche['id']; ?>" class="glyphicon glyphicon-trash" style="text-decoration : none;"></a>
                 <?php } ?>
                 <div class="badge badge-danger px-3 rounded-pill font-weight-normal">Like <?php echo $theFiche['nblike'] ?></div>
             </div>

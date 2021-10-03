@@ -510,6 +510,25 @@ class PdoWiki
         $requetePrepare->execute();
     }
 
+    
+    /**
+     * Supprime une fiche en base de donnée
+     *
+     * @param String $idFiche       id de la fiche
+     *
+     * @return null
+     */
+    function deleteFiche($idFiche, $idCompte)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'DELETE from fiche where fiche.id = :idFiche and fiche.idcompte = :idCompte'
+        );
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+
     /**
      * Enleve le like de la fiche
      *
