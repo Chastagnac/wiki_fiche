@@ -17,7 +17,7 @@
 </head>
 
 <div class="container1">
-    <div class="px-lg-2">
+    <div class="px-lg-1">
         <div class="row">
             <!-- Gallery item -->
             <?php
@@ -52,10 +52,12 @@
                                     nbcommentaire
                                 </span>
                                 <span class="like">
-                                    <a class="fa fa-heart" style="text-decoration : none;" href="index.php?uc=gererFiche&action=likerFiche&id=<?= $id ?>"></a> <?= $likes ?>
+                                    <a class="fa fa-heart"></a> <?= $likes ?>
                                 </span>
                             </div>
                         </div>
+                        <a href="index.php?uc=validation&action=validation&id=<?php echo $id; ?>" class="btn btn-success">Valider la fiche</a></h4>
+                            <a href="index.php?uc=validation&action=refuserFiche&id=<?php echo $id; ?>" class="btn btn-danger">Refuser la fiche</a></h4>
                     </div>
             <?php
                 }

@@ -256,11 +256,11 @@ function checkNewPassword($pswd, $lastpswd, $newpswd, $confirmpswd)
     }
 }
 
-    /**
-     * Retourne le libelle de l'état du compte
-     * @param type $id
-     * @return retourne role du compte
-     */
+/**
+ * Retourne le libelle de l'état du compte
+ * @param type $id
+ * @return retourne role du compte
+ */
 function getLibelleRole($id)
 {
     switch ($id) {
@@ -272,6 +272,26 @@ function getLibelleRole($id)
             break;
         case '-1':
             return "Visiteur";
+            break;
+    }
+}
+
+/**
+ * Retourne le libelle de l'état d'une compte
+ * @param type $id
+ * @return retourne etat de la fiche
+ */
+function getLibelleEtat($etat)
+{
+    switch ($etat) {
+        case 'VA':
+            return "Validée";
+            break;
+        case 'AT':
+            return "En attente";
+            break;
+        case 'RE':
+            return "Refusée";
             break;
     }
 }

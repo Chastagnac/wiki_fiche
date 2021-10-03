@@ -31,9 +31,9 @@ switch ($uc) {
     case 'accueil':
         include 'controleurs/c_accueil.php';
         break;
-        case 'validation':
-            include 'controleurs/c_validation.php'; 
-            break;
+    case 'validation':
+        include 'controleurs/c_validation.php';
+        break;
     case 'gererFiche':
         include 'controleurs/c_gererFiche.php';
         break;

@@ -2,13 +2,16 @@
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 switch ($action) {
     case 'likerFiche':
-        $word = 'likée.';
+        $word = 'La fiche n\'est plus likée.';
+        break;
+    case 'refuserFiche':
+        $word = 'La fiche à bien été refusée !';
         break;
 }
 ?>
 
 <div class="alert alert-warning" role="alert">
     <?php
-    echo 'La fiche n\'est plus ' . $word;
+    echo $word;
     ?>
 </div>
