@@ -68,6 +68,7 @@
                         </div>
                         <div class="text-right">
                             <a href="index.php?uc=gererFiche&action=modifierFiche&id=<?php echo $id; ?>" class="glyphicon glyphicon-pencil" style="text-decoration : none;"></a>
+                            <a href="index.php?uc=gererFiche&action=suppression&id=<?php echo $id; ?>" class="glyphicon glyphicon-trash" style="text-decoration : none;"></a>
                         </div>
                     </div>
                     <!-- End -->
