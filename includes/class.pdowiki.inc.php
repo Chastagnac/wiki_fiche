@@ -418,18 +418,20 @@ class PdoWiki
      *
      * @return null
      */
-    function updateInfosCompte($idCompte, $mail, $nom, $prenom)
+    function updateInfosCompte($idCompte, $mail, $nom, $prenom, $unRole)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'UPDATE `compte` SET compte.prenom = :unPrenom, '
                 . 'compte.nom = :unNom, compte.mail = :unMail, '
                 . 'compte.datemodif = DATE(NOW())'
-                . 'WHERE id = :idCompte'
+                . 'WHERE id = :idCompte '
+                . 'AND compte.role = :unRole'
         );
         $requetePrepare->bindParam(':unPrenom', $prenom, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unNom', $nom, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMail', $mail, PDO::PARAM_STR);
         $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unRole', $unRole, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
 

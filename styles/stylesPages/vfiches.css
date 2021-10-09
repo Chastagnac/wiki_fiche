@@ -1,11 +1,10 @@
-.bouton .bleu{
+.bouton .blue{
     border:none;
     padding:10px 20px;
     border-radius:25px;
     color:rgb(255, 255, 255);
     background:#1161ee;
     margin-top: 30px;
-
 }
 
 .buttonRecherche{
@@ -15,7 +14,6 @@
     color:rgb(255, 255, 255);
     background:#1161ee;
     margin-top: 30px;
-
 }
 
 .recherche{
@@ -37,21 +35,21 @@
 
 .contenuArticle{
     padding: 0 5px;
-    background-color: #fff;
     width: 100%;
     margin-top: 22px;
 }
 
-.contenuBlanc{
+.contenutestBlanc{
     background-color: #fff;
 }
-.contenu2{
+
+.contenutest2{
     padding: 0 5px;
     background-color: rgb(0, 0, 0);
     width: 100%;
 }
 
-.contenu3{
+.contenutest3{
     padding: 0 5px;
     background-color: rgb(57, 73, 0);
     width: 100%;
@@ -61,19 +59,23 @@
     background-color: red;
 }
 
-.unbackground2{
+.center{
     text-align: center;
+    color:rgb(240, 240, 240);
 }
 
 .contenuTopic{
-    margin-top: 90px;
-    padding: 0 5px;
-    background-color: #fff;
+    margin-top: 105px;
     width: 100%;
     box-sizing: border-box;
+    padding: 10px;
+    border-radius: 2%;
+    border: 1px solid rgb(240, 240, 240);
 }
 
-
+.white{
+    color:rgb(240, 240, 240);
+}
 
 ::-webkit-input-placeholder {
     font-style: italic;
@@ -93,16 +95,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 body{
     margin: 90px;
+    background-color: rgb(31, 32, 42);
 }
 .card{
-    margin-top: 10px;
-    padding: 15px;
-    width: 35%;
-    margin-left: 10px;
-    float: right;
-    background-color: #fff;
+    padding: 0 5px;
+    width: 100%;
+    margin-top: 22px;
     border: 1px solid rgb(240, 240, 240);
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .container2 {
@@ -139,6 +139,9 @@ body{
 }
 .card-footer .buttons{
     margin-top: 13px;
+    position: relative;
+    left:80%;
+    margin: 5px;
 }
 .card-footer span{
     cursor: pointer;
@@ -147,10 +150,15 @@ body{
     margin-right: 10px;
 }
 .card-footer .buttons .like{
-    color:rgb(0, 0, 0);
+    color:red;
 }
 @media screen and (max-width:640px){
     body{
         margin: 20px;
     }
+}
+
+.searchform
+{
+    
 }

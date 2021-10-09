@@ -27,7 +27,7 @@ switch ($action) {
             include 'vues/v_erreurs.php';
             include('vues/v_mesInformations.php');
         } else {
-            $pdo->updateInfosCompte($idCompte, $mail, $nom, $prenom);
+            $pdo->updateInfosCompte($idCompte, $mail, $nom, $prenom, $infosCompte['role']);
             include('vues/v_successful.php');
             include('vues/v_mesInformations.php');
         }

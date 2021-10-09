@@ -9,14 +9,19 @@ switch ($action) {
         break;
     case 'validerModifications':
         $word = 'Les informations ont bien étaient enregistrés.';
+        break;
     case 'changerMdp':
         $word = 'Le mot de passe à bien était modifé.';
+        break;
     case 'validation':
         $word = 'La fiche à bien été validée !';
+        break;
     case 'validerModification':
         $word = 'La fiche à bien été modifiée !';
-        case 'suppression':
-            $word = 'La fiche à bien été supprimée ! ';
+        break;
+    case 'suppression':
+        $word = 'La fiche à bien été supprimée ! ';
+        break;
 }
 ?>
 
