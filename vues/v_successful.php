@@ -22,6 +22,9 @@ switch ($action) {
     case 'suppression':
         $word = 'La fiche à bien été supprimée ! ';
         break;
+    case 'insererCommentaire':
+        $word = 'Le commentaire à bien été inséré !';
+        break;
 }
 ?>
 

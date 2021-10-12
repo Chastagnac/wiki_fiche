@@ -280,6 +280,40 @@ class PdoWiki
      *
      * @return null
      */
+    public function getComment($idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'SELECT commentaire.id AS id, commentaire.idcompte AS idcompte, '
+            . 'commentaire.commentaire AS commentaire, commentaire.date AS date '
+            . 'from commentaire where commentaire.idfiche = :unIdFiche'
+        );
+        $requetePrepare->bindParam(':unIdFiche', $idFiche, PDO::PARAM_INT);
+        $requetePrepare->execute();
+        return $requetePrepare->fetchAll();
+        $commentaires = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+            $id = $laLigne['id'];
+            $idcompte = $laLigne['idcompte'];
+            $idFIche = $laLigne['idfiche'];
+            $commentaire = $laLigne['commentaire'];
+            $date = $laLigne['date'];
+            $commentaires[] = array(
+                'id'            => $id,
+                'idcompte'      => $idcompte,
+                'idfiche'       => $idFIche,
+                'commentaire'   => $commentaire,
+                'date'          => $date
+            );
+        }
+        return $commentaires;
+    }
+
+    /**
+     * Retourne chaque fiche dans un tableau associative
+     *
+     *
+     * @return null
+     */
     public function getFichesByCompte($idCompte)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
@@ -361,6 +395,30 @@ class PdoWiki
         $requetePrepare->bindParam(':unEtat', $etat, PDO::PARAM_STR_CHAR);
         $requetePrepare->execute();
     }
+
+    /**
+     * Enregistre le compte dans la base de donnée
+     *
+     * @param String $nom        Nom du compte
+     * @param String $prenom     Prénom du compte
+     * @param String $mdp        Mdp du compte
+     * @param String $mail        mail du compte
+     * @param String $dateCreation        Mdp du compte
+     *
+     * @return null
+     */
+    function insertComment($idCompte, $idFiche, $commentaire)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'INSERT INTO `commentaire`(`id`, `idcompte`, `idfiche`, `commentaire`, `date`) '
+                . 'VALUES (DEFAULT, :unIdCompte, :idFiche, :commentaire, NOW())'
+        );
+        $requetePrepare->bindParam(':unIdCompte', $idCompte, PDO::PARAM_INT);
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_INT);
+        $requetePrepare->bindParam(':commentaire', $commentaire, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
 
     /**
      * Enregistre le compte dans la base de donnée
@@ -464,9 +522,9 @@ class PdoWiki
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'UPDATE `fiche` SET fiche.idcategorie = :uneCateg, '
-            . 'fiche.libelle = :unLibelle, fiche.description= :uneDescription, '
-            . 'fiche.contenu= :unContenu, fiche.datemodif = DATE(NOW()) '
-            . 'WHERE fiche.id = :idFiche'
+                . 'fiche.libelle = :unLibelle, fiche.description= :uneDescription, '
+                . 'fiche.contenu= :unContenu, fiche.datemodif = DATE(NOW()) '
+                . 'WHERE fiche.id = :idFiche'
         );
         $requetePrepare->bindParam(':uneCateg', $categorie, PDO::PARAM_INT);
         $requetePrepare->bindParam(':unLibelle', $libelle, PDO::PARAM_STR);
@@ -512,7 +570,7 @@ class PdoWiki
         $requetePrepare->execute();
     }
 
-    
+
     /**
      * Supprime une fiche en base de donnée
      *
@@ -527,6 +585,22 @@ class PdoWiki
         );
         $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_STR);
         $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+        /**
+     * Supprime un commentaire en base de donnée
+     *
+     * @param String $idFiche       id de la fiche
+     *
+     * @return null
+     */
+    function deleteComm($idcom)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'DELETE from commentaire where commentaire.id = :idcom'
+        );
+        $requetePrepare->bindParam(':idcom', $idcom, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
 

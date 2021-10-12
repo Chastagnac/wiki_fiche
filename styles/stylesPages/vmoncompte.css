@@ -62,3 +62,10 @@ body {
   border-radius: 1%;
   margin: 10px;
 }
+textarea{
+
+height:200px;
+width:80%;
+resize:none
+
+}

@@ -44,6 +44,7 @@ switch ($action) {
     case 'visiterFiche':
         $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
         $theFiche = $pdo->getTheFiche($idFiche);
+        $commentaires = $pdo->getComment($idFiche);
         include 'vues/v_fiche.php';
         break;
 
@@ -111,7 +112,31 @@ switch ($action) {
         $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $pdo->deleteFiche($idFiche, $idCompte);
         include 'vues/v_successful.php';
-        $fiches = $pdo->getFiches('VA');
-        include('vues/v_listFiche.php');
+        if ($action == "visiterFiche") {
+            $fiches = $pdo->getFiches('VA');
+            include('vues/v_listFiche.php');
+        } else {
+            $mesFiches = $pdo->getFichesByCompte($idCompte);
+            include('vues/v_mesFiches.php');
+        }
+
+        break;
+    case 'insererCommentaire':
+        var_dump($_POST);
+        $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $commentaire = filter_input(INPUT_POST, 'commentaire', FILTER_SANITIZE_STRING);
+        if (nbErreurs() !== 0) {
+            include 'vues/v_erreurs.php';
+        } else {
+            $pdo->insertComment($idCompte, $idFiche, $commentaire);
+            include 'vues/v_successful.php';
+            header("Location: index.php?uc=gererFiche&action=visiterFiche&id=$idFiche");
+        }
+        break;
+    case 'suppressioncomm':
+        $idCom = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $idFiche = filter_input(INPUT_GET, 'idfiche', FILTER_SANITIZE_NUMBER_INT);
+        $pdo->deleteComm($idCom);
+        header("Location: index.php?uc=gererFiche&action=visiterFiche&id=$idFiche");
         break;
 }
