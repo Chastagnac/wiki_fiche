@@ -308,6 +308,16 @@ class PdoWiki
         return $commentaires;
     }
 
+    function getNbComment($idFiche) {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'SELECT count(*) AS nb from commentaire WHERE commentaire.idfiche = :idFiche'
+        );
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_INT);
+        $requetePrepare->execute();
+        $laLigne = $requetePrepare->fetch();
+        return $laLigne;
+    }
+
     /**
      * Retourne chaque fiche dans un tableau associative
      *

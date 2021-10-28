@@ -1,6 +1,5 @@
 * {
   color: aliceblue !important;
-  background-color: #1f202a !important;
   font-size: revert !important;
 }
 .classcenter {
@@ -53,7 +52,7 @@
 }
 body {
   color: aliceblue;
-  background-color: #1f202a;
+  background-color: #1f202a !important;
 }
 
 .shadow-bg {
@@ -62,10 +61,30 @@ body {
   border-radius: 1%;
   margin: 10px;
 }
-textarea{
+textarea {
+  height: 200px;
+  width: 80%;
+  resize: none;
+}
+.active2 {
+  background-color: #337ab7;
+  border-radius: 5px;
+  padding: 10px;
+  border-radius: 21px;
+}
 
-height:200px;
-width:80%;
-resize:none
+.nav.nav-pills.pull-right {
+  margin-top: 60px;
+}
 
+a:hover {
+  background-color: #fff;
+  text-decoration: none !important;
+  color: #0f2b44 !important;
+  padding: 10px;
+  border-radius: 21px;
+}
+.row.vertical-align {
+  margin-top: 42px;
+  font-size: 14px !important;
 }

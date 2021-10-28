@@ -35,9 +35,11 @@
                     $etat = $fiche['etat']
             ?>
                     <div class="card">
-                        <div class="card-header">
-                            <p><?php echo htmlspecialchars($datecreation) ?></p>
-                            <p><?php echo getLibelleEtat($etat) ?></p>
+                        <div class="text-right">
+                            <?php echo htmlspecialchars($datecreation) ?>
+                        </div>
+                        <div>
+                            <p><?php echo "Satut Fiche : " . getLibelleEtat($etat) ?></p>
                             <?php
                             if ($_SESSION['role'] != '-1') { ?>
                                 <h4>
@@ -52,7 +54,7 @@
                             } ?>
                         </div>
                         <div class="card-body">
-                            <?php echo htmlspecialchars($description) ?>
+                            <mall><?php echo htmlspecialchars($description) ?></mall>
                         </div>
                         <div class="card-footer">
                             <div class="buttons">

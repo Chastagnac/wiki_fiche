@@ -44,7 +44,6 @@ switch ($action) {
     case 'visiterFiche':
         $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
         $theFiche = $pdo->getTheFiche($idFiche);
-        $commentaires = $pdo->getComment($idFiche);
         include 'vues/v_fiche.php';
         break;
 
