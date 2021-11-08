@@ -38,7 +38,8 @@
                         $contenu = $fiche['contenu'];
                         $datemodif = $fiche['datemodif'];
                         $datecreation = $fiche['datecreation'];
-                        $likes = $fiche['nblike']
+                        $likes = $fiche['nblike'];
+                        $nbCommentaires = $pdo->getNbComment($id);
                 ?>
                         <div class="card">
                             <div class="card-header">
@@ -55,7 +56,7 @@
                                 <div class="buttons">
                                     <span class="comment">
                                         <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                        nbcommentaire
+                                        <?php echo htmlspecialchars($nbCommentaires['nb']) ?></a>
                                     </span>
                                     <span class="like">
                                         <a class="fa fa-heart"></a> <?= $likes ?>

@@ -16,11 +16,10 @@
   margin-top: 4%;
 }
 .container1 {
-  padding: 20px;
-  border: groove;
-  margin: auto;
-  width: 75%;
-}
+    padding: 45px;
+    border: groove;
+    margin: auto;
+  }
 
 .profile {
   position: static;
