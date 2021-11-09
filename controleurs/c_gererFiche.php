@@ -35,6 +35,7 @@ switch ($action) {
             include 'vues/v_creerFiche.php';
         } else {
             $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu, $etatCompte);
+            $pdo->updateXp($idCompte, 100);
             include 'vues/v_successful.php';
             $fiches = $pdo->getFiches('VA');
             include('vues/v_listFiche.php');
@@ -44,6 +45,7 @@ switch ($action) {
     case 'visiterFiche':
         $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
         $theFiche = $pdo->getTheFiche($idFiche);
+        $commentaires = $pdo->getComment($idFiche);
         include 'vues/v_fiche.php';
         break;
 
@@ -59,8 +61,7 @@ switch ($action) {
             $pdo->deleteLike($idCompte, $idFiche);
             include 'vues/v_message.php';
         }
-        $fiches = $pdo->getFiches('VA');
-        include('vues/v_listFiche.php');
+        header("Location: index.php?uc=gererFiche&action=selectionnerFiche");
 
     case 'getFicheByCategorie':
         // Vérifie si on récupere bien des idcateg dans la validation des checkboxs
@@ -109,19 +110,11 @@ switch ($action) {
         break;
     case 'suppression':
         $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $pdo->deleteFiche($idFiche, $idCompte);
+        $pdo->deleteFiche($idFiche);
         include 'vues/v_successful.php';
-        if ($action == "visiterFiche") {
-            $fiches = $pdo->getFiches('VA');
-            include('vues/v_listFiche.php');
-        } else {
-            $mesFiches = $pdo->getFichesByCompte($idCompte);
-            include('vues/v_mesFiches.php');
-        }
-
+        header("Location: index.php?uc=gererFiche&action=selectionnerFiche");
         break;
     case 'insererCommentaire':
-        var_dump($_POST);
         $idFiche = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $commentaire = filter_input(INPUT_POST, 'commentaire', FILTER_SANITIZE_STRING);
         if (nbErreurs() !== 0) {

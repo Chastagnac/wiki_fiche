@@ -87,7 +87,7 @@ class PdoWiki
         $requetePrepare = PdoWiki::$monPdo->prepare(
             'SELECT compte.id AS id, compte.nom AS nom, '
                 . 'compte.prenom AS prenom, compte.mail AS mail, '
-                . 'compte.role AS role '
+                . 'compte.role AS role, compte.xp AS xp '
                 . 'FROM compte '
                 . 'WHERE compte.mail = :unMail AND compte.mdp = :unMdp'
         );
@@ -97,7 +97,15 @@ class PdoWiki
         return $requetePrepare->fetch();
     }
 
-
+    function updateXp($idCompte, $nb)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'UPDATE `compte` SET `xp`= compte.xp + :nb WHERE compte.id = :idCompte'
+        );
+        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_INT);
+        $requetePrepare->bindParam(':nb', $nb, PDO::PARAM_INT);
+        $requetePrepare->execute();
+    }
 
     /**
      * Retourne les informations d'un compte
@@ -455,6 +463,7 @@ class PdoWiki
     }
 
 
+
     /**
      * Enregistre le nouveau mdp dans la base de donnée
      *
@@ -588,13 +597,12 @@ class PdoWiki
      *
      * @return null
      */
-    function deleteFiche($idFiche, $idCompte)
+    function deleteFiche($idFiche)
     {
         $requetePrepare = PdoWiki::$monPdo->prepare(
-            'DELETE from fiche where fiche.id = :idFiche and fiche.idcompte = :idCompte'
+            'DELETE from fiche where fiche.id = :idFiche'
         );
         $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_STR);
-        $requetePrepare->bindParam(':idCompte', $idCompte, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
 

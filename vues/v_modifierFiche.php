@@ -10,7 +10,10 @@
  */
 
 ?>
-
+<head>
+    <link rel="stylesheet" href="../styles/stylesPages/vmesfiches.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
 <form role="form" method="post" action="index.php?uc=gererFiche&action=validerModification&id=<?php echo $fiche['id']; ?>">
     <fieldset>
         <div class="form-group">

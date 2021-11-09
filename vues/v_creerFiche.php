@@ -25,7 +25,7 @@
                 <input type="text" class="form-control" name="description" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Description">
             </div>
             <div class="form-group">
-                <textarea type="text" rows="10" class="form-control" name="contenu" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="..."></textarea>
+                <textarea type="text"  rows="10" class="form-control" name="contenu" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="..."></textarea>
             </div>
             <div class="form-group">
                 <div class="form-group">

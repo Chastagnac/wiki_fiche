@@ -28,6 +28,20 @@
         <div class="profile">
             <img src="images/mr.png" class="logomr">
             <label for="exampleInputPassword1"></label>
+            <div class="form-group" style="margin: 5px;">
+                <?php
+                $xp = $_SESSION['rank'];
+                $lvl = getRank($xp)['value'];
+                $max = getRank($xp)['nextlvl'];
+                ?>
+                <small style="float: right; margin : -5px;">
+                    <?php echo ($xp . ' / ' . $max); ?>
+                </small>
+                <?php
+                getProgressBar($xp, $lvl);
+                echo ("Rank : " . getRank($xp)['lvl']);
+                ?>
+            </div>
         </div>
         <div class="col">
             <div class="form-group">

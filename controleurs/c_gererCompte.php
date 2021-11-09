@@ -52,6 +52,6 @@ switch ($action) {
         break;
     case 'demandeEnregistrement':
         deconnecter();
-        header('vues/v_connexion.php');
+        header("Refresh: 3;URL=index.php");
         break;
 }

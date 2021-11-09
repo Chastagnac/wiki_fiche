@@ -73,10 +73,10 @@ textarea {
 }
 
 .nav.nav-pills.pull-right {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
-a:hover {
+.act:hover {
   background-color: #fff;
   text-decoration: none !important;
   color: #0f2b44 !important;

@@ -9,20 +9,20 @@
         <div class="header">
             <ul class="classcenter" role="tablist">
                 <li <?php if ($action == 'mesInformations') { ?>class="active2" <?php } ?>>
-                    <a href="index.php?uc=gererCompte&action=mesInformations">
+                    <a href="index.php?uc=gererCompte&action=mesInformations" class="act">
                         <span class="glyphicon glyphicon-list"></span>
                         Mes Informations
                     </a>
                 </li>
                 <li <?php if ($action == 'mesFiches') { ?>class="active2" <?php } ?>>
-                    <a href="index.php?uc=gererCompte&action=mesFiches">
+                    <a href="index.php?uc=gererCompte&action=mesFiches" class="act">
                         <span class="glyphicon glyphicon-th"></span>
                         Mes Fiches
                     </a>
                 </li>
                 <?php if ($_SESSION['role'] == '1') { ?>
                     <li <?php if ($action == 'validerFiches') { ?>class="active2" <?php } ?>>
-                        <a href="index.php?uc=validation&action=validerFiches">
+                        <a href="index.php?uc=validation&action=validerFiches" class="act">
                             <span class="glyphicon glyphicon-user"></span>
                             Valider les fiches
                         </a>

@@ -30,12 +30,13 @@ function estConnecte()
  *
  * @return null
  */
-function connecter($idCompte, $nom, $prenom, $role)
+function connecter($idCompte, $nom, $prenom, $role, $xp)
 {
     $_SESSION['idCompte'] = $idCompte;
     $_SESSION['nom'] = $nom;
     $_SESSION['prenom'] = $prenom;
     $_SESSION['role'] = $role;
+    $_SESSION['rank'] = $xp;
 }
 
 /**
@@ -103,6 +104,93 @@ function getDateToday()
 {
     $today = getDate();
     return ($today['year'] . "-" . $today['mday'] . "-" . $today["mon"]);
+}
+
+function getRank($xp)
+{
+    if ($xp < 30) {
+        $array["lvl"] = "Bronze";
+        $array["value"] = "1";
+        $array["nextlvl"] = "30";
+        return $array;
+    } elseif ($xp >= 30 && $xp < 100) {
+        $array["lvl"] = "Silver";
+        $array["value"] = "2";
+        $array["nextlvl"] = "100";
+        return $array;
+    } elseif ($xp >= 100 && $xp < 200) {
+        $array["lvl"] = "Gold";
+        $array["value"] = "3";
+        $array["nextlvl"] = "200";
+        return $array;
+    } elseif ($xp >= 200 && $xp < 500) {
+        $array["lvl"] = "Diamand";
+        $array["value"] = "4";
+        $array["nextlvl"] = "500";
+        return $array;
+    } elseif ($xp >= 500 && $xp < 800) {
+        $array["lvl"] = "Champion";
+        $array["value"] = "5";
+        $array["nextlvl"] = "800";
+        return $array;
+    } elseif ($xp >= 800 && $xp < 1500) {
+        $array["lvl"] = "Master";
+        $array["value"] = "5";
+        $array["nextlvl"] = "999999";
+        return $array;
+    }
+}
+
+function getProgressBar($xp, $lvl)
+{
+    switch ($lvl) {
+        case 1:
+?>
+            <progress max="30" value="<?php echo ($xp) ?>"></progress>
+            <img src="../images/bronze-1.png" alt="" height="40px">
+        <?php
+            break;
+        case 2:
+        ?>
+            <progress max="100" value="<?php echo ($xp) ?>"></progress>
+            <img src="../images/Silver1_rank_icon.png" alt="" height="40px">
+        <?php
+            break;
+        case 3:
+        ?>
+            <progress max="200" value="<?php echo ($xp) ?>"></progress>
+            <img src="../images/Gold1_rank_icon.png" alt="" height="40px">
+        <?php
+            break;
+        case 4:
+        ?>
+            <progress max="500" value="<?php echo ($xp) ?>"></progress>
+            <img src="../images/s4-15.png" alt="" height="40px">
+        <?php
+            break;
+        case 5:
+        ?>
+            <progress max="800" value="<?php echo ($xp) ?>"></progress>
+            <img src="../images/champion.png" alt="" height="40px">
+        <?php
+            break;
+        case 6:
+        ?>
+            <progress max="1500" value="<?php echo ($xp) ?>"></progress>
+            <img src="../images/am4sfiv1f1f11.png" alt="" height="40px">
+    <?php
+            break;
+    }
+    ?>
+    <style>
+        progress {
+            display: flex;
+            height: 25px;
+            margin-top: 10px;
+        }
+    </style>
+<?php
+
 }
 
 /**

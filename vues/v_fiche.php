@@ -12,15 +12,14 @@
 ?>
 
 <head>
-    <link rel="stylesheet" href="../styles/stylesPages/vmesfiches.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../styles/stylesPages/vfiches.css">
 </head>
 
 <div class="col-xl-5 col-lg-12 col-md-6 mb-10">
     <div class="border">
         <div class="padding">
             <h4 class="text-center">
-                <?php echo $theFiche['libelle']; ?>
+            <?php echo $theFiche['libelle']; ?>
                 </a></h4>
             <p class="text-left">
                 <?php echo $theFiche['description']; ?>

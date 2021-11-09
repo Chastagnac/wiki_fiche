@@ -27,7 +27,8 @@ switch ($action) {
             $nom = $compte['nom'];
             $prenom = $compte['prenom'];
             $role = $compte['role'];
-            connecter($id, $nom, $prenom, $role);
+            $xp = $compte['xp'];
+            connecter($id, $nom, $prenom, $role, $xp);
             header('Location: index.php');
         }
         break;
@@ -40,7 +41,8 @@ switch ($action) {
             $nom = $compte['nom'];
             $prenom = $compte['prenom'];
             $role = $compte['role'];
-            connecter($id, $nom, $prenom, $role);
+            $xp = $compte['xp'];
+            connecter($id, $nom, $prenom, $role, $xp);
             header('Location: index.php');
         } else {
             ajouterErreur('Email ou mot de passe incorrect');

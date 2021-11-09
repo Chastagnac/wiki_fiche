@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vue Déconnexion
  * *
@@ -12,11 +13,15 @@
 deconnecter();
 ?>
 
-<div class="alert alert-info" role="alert">
-    <p>Vous avez bien été déconnecté. <a href="index.php">Cliquez ici</a>
-        pour revenir à la page de connexion.</p>
+<head>
+    <link rel="stylesheet" href="../styles/stylesPages/vmoncompte.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<div class="text-align center">
+    <p>Vous avez bien été déconnecté. Vous allez être redirigé vers la page de connexion <br>
+    ou <a href="index.php">Cliquez ici.</a>
 </div>
+
+
 <?php
 header("Refresh: 3;URL=index.php");
-
-
