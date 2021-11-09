@@ -65,24 +65,13 @@ textarea {
   width: 80%;
   resize: none;
 }
-.active2 {
-  background-color: #337ab7;
-  border-radius: 5px;
-  padding: 10px;
-  border-radius: 21px;
-}
+
 
 .nav.nav-pills.pull-right {
   margin-top: 30px;
 }
 
-.act:hover {
-  background-color: #fff;
-  text-decoration: none !important;
-  color: #0f2b44 !important;
-  padding: 10px;
-  border-radius: 21px;
-}
+
 .row.vertical-align {
   margin-top: 42px;
   font-size: 14px !important;
