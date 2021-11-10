@@ -37,7 +37,11 @@ class PdoWiki
     private static $monPdo;
     private static $monPdoWiki = null;
 
-
+    
+    // private static $serveur = 'mysql:host=mysql-chastagnac.alwaysdata.net';
+    // private static $bdd = 'dbname=chastagnac_wiki_fiche';
+    // private static $user = '243609_root';
+    // private static $mdp = 'wiki_fiche1234';
     /**
      * Constructeur privé, crée l'instance de PDO qui sera sollicitée
      * pour toutes les méthodes de la classe

@@ -19,20 +19,20 @@
     <fieldset>
         <div class="p-4">
             <div class="form-group">
-                <input type="text" class="form-control" name="libelle" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titre">
+                <input type="text" class="form-control" name="libelle" id="title" aria-describedby="emailHelp" placeholder="Titre">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" name="description" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Description">
+                <input type="text" class="form-control" name="description" id="desc" aria-describedby="emailHelp" placeholder="Description">
             </div>
             <div class="form-group">
-                <textarea type="text"  rows="10" class="form-control" name="contenu" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="..."></textarea>
+                <textarea type="text" rows="10" class="form-control" name="contenu" id="content" aria-describedby="emailHelp" placeholder="..."></textarea>
             </div>
             <div class="form-group">
                 <div class="form-group">
                     <div class="input-group">
                         <label for="categorie">Choisir la categorie de la fiche</label>
                         <br>
-                        <select name="categorie">
+                        <select name="categorie" style="border-radius: 5px; padding: 3px;">
                             <option value="1">Developpement</option>
                             <option value="2">ActuWeb</option>
                             <option value="3">Mobile</option>
@@ -45,3 +45,7 @@
         </div>
     </fieldset>
 </form>
+<script src="../includes/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('contenu')
+</script>

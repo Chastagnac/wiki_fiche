@@ -17,7 +17,7 @@ deconnecter();
     <link rel="stylesheet" href="../styles/stylesPages/vmoncompte.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
-<div class="text-align center">
+<div class="text-center">
     <p>Vous avez bien été déconnecté. Vous allez être redirigé vers la page de connexion <br>
     ou <a href="index.php">Cliquez ici.</a>
 </div>
