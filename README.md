@@ -1,5 +1,5 @@
 # Projet base de connaissance Wiki Fiche G4
-Base de donnée : 
+
 -----------------
 
 Outils, langages et logiciels :
@@ -13,5 +13,7 @@ Outils, langages et logiciels :
 -----------------
 #####
 Réalisation :
-* Documentation technique : 
+Documentation technique : 
   
+#####
+Base de donnée : 
