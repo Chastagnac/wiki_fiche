@@ -133,10 +133,10 @@ function getRank($xp)
         $array["value"] = "5";
         $array["nextlvl"] = "800";
         return $array;
-    } elseif ($xp >= 800 && $xp < 1500) {
+    } elseif ($xp >= 800) {
         $array["lvl"] = "Master";
-        $array["value"] = "5";
-        $array["nextlvl"] = "999999";
+        $array["value"] = "6";
+        $array["nextlvl"] = "1500";
         return $array;
     }
 }

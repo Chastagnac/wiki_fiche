@@ -30,14 +30,17 @@
             <label for="exampleInputPassword1"></label>
             <div class="form-group" style="margin: 5px;">
                 <?php
-                $xp = $_SESSION['rank'];
+                $xp = $infosCompte['xp'];
                 $lvl = getRank($xp)['value'];
                 $max = getRank($xp)['nextlvl'];
+
+                if ($xp < $max) {
                 ?>
-                <small style="float: right; margin : -5px;">
-                    <?php echo ($xp . ' / ' . $max); ?>
-                </small>
+                    <small style="float: right; margin : -5px;">
+                        <?php echo ($xp . ' / ' . $max); ?>
+                    </small>
                 <?php
+                }
                 getProgressBar($xp, $lvl);
                 echo ("Rank : " . getRank($xp)['lvl']);
                 ?>
@@ -94,15 +97,15 @@
                     <div class="p-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email :</label>
-                            <input type="email" class="form-control" name="mail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez le nouvel email">
+                            <input type="email" class="form-control" style="color : black !important" name="mail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez le nouvel email">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nom :</label>
-                            <input type="text" class="form-control" name="nom" id="exampleInputPassword1" placeholder="Entrez le nom">
+                            <input type="text" class="form-control" style="color : black !important" name="nom" id="exampleInputPassword1" placeholder="Entrez le nom">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Prénom :</label>
-                            <input type="text" class="form-control" name="prenom" id="exampleInputPassword1" placeholder="Entrez le prénom">
+                            <input type="text" class="form-control" style="color : black !important" name="prenom" id="exampleInputPassword1" placeholder="Entrez le prénom">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -130,15 +133,15 @@
                     <div class="p-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Ancien mot de passe :</label>
-                            <input type="password" class="form-control" name="lastpswd" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez l'ancien mot de passe">
+                            <input type="password" class="form-control" style="color : black !important" name="lastpswd" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez l'ancien mot de passe">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nouveau mot de passe</label>
-                            <input type="password" class="form-control" name="newpswd" id="exampleInputPassword1" placeholder="Entrez le nouveaux mot de passe">
+                            <input type="password" class="form-control" style="color : black !important" name="newpswd" id="exampleInputPassword1" placeholder="Entrez le nouveaux mot de passe">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Confirmer le mot de passe :</label>
-                            <input type="password" class="form-control" name="confirmpswd" id="exampleInputPassword1" placeholder="Confirmer le nouveau mot de passe">
+                            <input type="password" class="form-control" style="color : black !important" name="confirmpswd" id="exampleInputPassword1" placeholder="Confirmer le nouveau mot de passe">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

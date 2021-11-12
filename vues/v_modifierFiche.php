@@ -29,19 +29,19 @@
             <div class="input-group" style="width : 100%;" value="<?php echo $fiche['contenu']; ?>">
                 <textarea class="form-control" name="contenu" type="text"><?php echo $fiche['contenu']; ?>"</textarea>
             </div>
-            <div class="form-group">
-                <div class="input-group">
+            <div class="form-group" >
+                <div class="input-group"><br>
                     <label for="categorie">Choisir la categorie de la fiche</label>
                     <br>
-                    <select name="categorie">
-                        <option value="1">Developpement</option>
-                        <option value="2">ActuWeb</option>
-                        <option value="3">Mobile</option>
-                        <option value="4">Jeux</option>
+                    <select name="categorie" style="color: black !important;">
+                        <option style="color: black !important;" value="1">Developpement</option>
+                        <option style="color: black !important;" value="2">ActuWeb</option>
+                        <option style="color: black !important;" value="3">Mobile</option>
+                        <option style="color: black !important;" value="4">Jeux</option>
                     </select>
                 </div>
             </div>
         </div>
-        <input class="btn btn-lg btn-success btn-block" type="submit" value="Modifier la fiche">
+        <input class="btn btn-lg btn-success btn-block" style="width: 50% !important;" type="submit" value="Modifier la fiche">
     </fieldset>
 </form>

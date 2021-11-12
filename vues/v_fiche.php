@@ -20,7 +20,7 @@
         <div class="padding">
             <h4 class="text-center">
             <?php echo $theFiche['libelle']; ?>
-                </a></h4>
+                </a></h4><br>
             <p class="text-left">
                 <?php echo $theFiche['description']; ?>
             </p>
@@ -31,6 +31,7 @@
                 <?php echo $theFiche['datecreation']; ?>
             </p>
             <div class="text-right">
+                <br>
                 <?php if ($_SESSION['role'] == '1') { ?>
                     <a href="index.php?uc=gererFiche&action=modifierFiche&id=<?php echo $theFiche['id']; ?>" class="glyphicon glyphicon-pencil" style="text-decoration : none;"></a>
                     <a href="index.php?uc=gererFiche&action=suppression&id=<?php echo $theFiche['id']; ?>" class="glyphicon glyphicon-trash" style="text-decoration : none;"></a>
@@ -43,9 +44,9 @@
 <form role="form" method="post" action="index.php?uc=gererFiche&action=insererCommentaire&id=<?php echo $theFiche['id']; ?>">
     <div class="p-2">
         <div class="form-group">
-            <input type="text" class="form-control" name="commentaire" id="transparent-input" aria-describedby="emailHelp" placeholder="Ecrivez un commentaire ...">
+            <input type="text" class="form-control" style="width: 70%;" name="commentaire" id="transparent-input" aria-describedby="emailHelp" placeholder="Ecrivez un commentaire ...">
         </div>
-        <button type="submit" style="margin-left: 22px;" class="btn btn-primary">Poster</button>
+        <button type="submit" class="btn btn-success">Poster</button>
     </div>
 </form>
 <?php
@@ -56,8 +57,7 @@ foreach ($commentaires as $commentaire => $com) {
     $date = $com['date'];
     $auteur = $pdo->getInfosCompteById($idAuteur);
 ?>
-    <div class="card">
-
+    <div class="card2">
         <p class="text-muted">
             <?php echo htmlspecialchars($auteur['prenom'] . ' ' . $auteur['nom']); ?>
             <span class="comment">
@@ -73,9 +73,6 @@ foreach ($commentaires as $commentaire => $com) {
         <div class="card-body">
             <p><?php echo htmlspecialchars($commentaire); ?></p>
             <br>
-            <?php if (count($commentaires) != 1) { ?>
-                <hr>
-            <?php } ?>
         </div>
     </div>
 <?php }

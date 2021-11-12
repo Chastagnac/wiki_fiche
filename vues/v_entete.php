@@ -39,7 +39,7 @@
                 <div class="row vertical-align">
                     <div class="col-md-4">
                         <h1>
-                            <img src="./images/logo.png" class="img-responsive" alt="Wiki fiche" title="wifi fiche">
+                            <img src="../images/wiki_fiche_2_1.png" class="img-responsive" alt="Wiki fiche" title="wifi fiche">
                         </h1>
                     </div>
 

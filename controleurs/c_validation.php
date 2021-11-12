@@ -21,6 +21,8 @@ switch ($action) {
         include 'vues/v_validerFiche.php';
         break;
     case 'validation':
+        $idAuteur = $pdo->getIdCompteByFiche($idFiche);
+        $pdo->updateXp($idAuteur['idcompte'], 35);
         $pdo->updateEtatFiche($idFiche, 'VA');
         $fiches = $pdo->getFiches('AT');
         include 'vues/v_successful.php';

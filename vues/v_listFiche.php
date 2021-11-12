@@ -21,9 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<div id="accueil" class="white">
-    <h2>Wiki Fiche</h2>
-</div>
 
 <div class="container">
     <div class="row">
@@ -69,7 +66,7 @@
                 <label for="terme">
                     <script src="../js/app.js"></script>
                     <form id="myForm" role="form" method="post" action="index.php?uc=gererFiche&action=Rechercher">
-                        <input class="recherche" type="text" name="terme" id="terme" placeholder="Recherche d'article ...">
+                        <input class="recherche" type="text" name="terme" style="color: black !important" id="terme" placeholder="Recherche d'article ...">
                         <button class="buttonRecherche" type="submit" alt="Lancer la recherche!">
                             <i class="fa">&#xf002;</i>
                         </button>

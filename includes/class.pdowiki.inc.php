@@ -125,7 +125,7 @@ class PdoWiki
                 . 'compte.prenom AS prenom, compte.mail AS mail, '
                 . 'compte.mdp AS mdp, compte.datecreation, '
                 . 'compte.datemodif AS datemodif, '
-                . 'compte.role AS role '
+                . 'compte.role AS role, compte.xp AS xp '
                 . 'FROM compte '
                 . 'WHERE compte.id = :unId'
         );
@@ -134,6 +134,24 @@ class PdoWiki
         return $requetePrepare->fetch();
     }
 
+
+        /**
+     * Retourne les informations d'une fiche
+     *
+     * @param String $id   id de la fiche
+     *
+     * @return l'id, le nom, le prénom, le mail, le mdp et la date de création sous la forme d'un tableau associatif
+     */
+    public function getIdCompteByFiche($idFiche)
+    {
+        $requetePrepare = PdoWiki::$monPdo->prepare(
+            'SELECT distinct fiche.idcompte as idcompte '
+                . 'from fiche where fiche.id = :idFiche'
+        );
+        $requetePrepare->bindParam(':idFiche', $idFiche, PDO::PARAM_INT);
+        $requetePrepare->execute();
+        return $requetePrepare->fetch();
+    }
 
     /**
      * Retourne chaque fiche dans un tableau associative

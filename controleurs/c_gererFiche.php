@@ -35,7 +35,9 @@ switch ($action) {
             include 'vues/v_creerFiche.php';
         } else {
             $fiches = $pdo->insertFiches($idCategorie, $idCompte, $libelle, $description, $contenu, $etatCompte);
-            $pdo->updateXp($idCompte, 100);
+            if($etatCompte === 'VA') {
+               $pdo->updateXp($idCompte, 35);
+            }
             include 'vues/v_successful.php';
             $fiches = $pdo->getFiches('VA');
             include('vues/v_listFiche.php');
@@ -120,6 +122,7 @@ switch ($action) {
         if (nbErreurs() !== 0) {
             include 'vues/v_erreurs.php';
         } else {
+            $pdo->updateXp($idCompte, 5);
             $pdo->insertComment($idCompte, $idFiche, $commentaire);
             include 'vues/v_successful.php';
             header("Location: index.php?uc=gererFiche&action=visiterFiche&id=$idFiche");

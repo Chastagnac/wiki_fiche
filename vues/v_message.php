@@ -12,6 +12,6 @@ switch ($action) {
 
 <div class="alert alert-warning" role="alert">
     <?php
-    echo $word;
+    echo '<p style="color : black !important"> ' . $word . '</p>';
     ?>
 </div>

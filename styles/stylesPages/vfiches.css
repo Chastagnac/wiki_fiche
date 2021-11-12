@@ -107,7 +107,13 @@ body {
   border: 1px solid rgb(240, 240, 240);
   border-radius: 6px;
 }
-
+.card2 {
+    padding: 12px 5px;
+    width: 60%;
+    margin-top: 22px;
+    background-color: #3235588a;
+    border-radius: 6px;
+  }
 .container2 {
   padding: 10px;
   float: left;

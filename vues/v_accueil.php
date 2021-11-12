@@ -25,7 +25,7 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-3">
-                <img class="rounded-circle" src="" alt="Generic placeholder image" width="140" height="140">
+                <img class="rounded-circle" src="../images/team/Untitled_design_3.png" alt="Generic placeholder image" width="140" height="140">
                 <h2>Léo Chastagnac</h2>
                 <p>
                 <ul>
@@ -39,7 +39,7 @@
                 </p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-3">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                <img class="rounded-circle" src="../images/team/Untitled_design_2.png" alt="Generic placeholder image" width="140" height="140">
                 <h2>Razine Beldjilali </h2>
                 <p>
                 <ul>
@@ -50,7 +50,7 @@
                 </p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-3">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                <img class="rounded-circle" src="../images/team/Untitled_design_4.png" alt="Generic placeholder image" width="140" height="140">
                 <h2>Van Hai Le </h2>
                 <p>
                 <ul>
@@ -61,7 +61,7 @@
                 </p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-3">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                <img class="rounded-circle" src="../images/team/Untitled_design_5.png" alt="Generic placeholder image" width="140" height="140">
                 <h2>Lucas Pezone </h2>
                 <p>
                 <ul>
@@ -169,6 +169,10 @@
                 <tr style="height: 50px;">
                     <td style="height: 50px;"><span style="font-weight: 400;">Visibilit&eacute; du compte</span></td>
                     <td style="height: 50px;"><span style="font-weight: 400;">Avoir une partie compte ou l&rsquo;on peut voir nos propre fiches</span></td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td style="height: 50px;"><span style="font-weight: 400;">Sytème de rang</span></td>
+                    <td style="height: 50px;"><span style="font-weight: 400;">Pour chaque ajout de fiche ou de commentaires .. le niveau d'expérience augmente</span></td>
                 </tr>
             </tbody>
         </table>
