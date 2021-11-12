@@ -13,6 +13,8 @@
 require_once 'includes/fct.inc.php';
 require_once 'includes/class.pdowiki.inc.php';
 session_start();
+
+
 $pdo = PdoWiki::getPdoWiki();
 $estConnecte = estConnecte();
 require 'vues/v_entete.php';
@@ -29,20 +31,23 @@ switch ($uc) {
     case 'accueil':
         include 'controleurs/c_accueil.php';
         break;
-    case 'gererFrais':
-        include 'controleurs/c_gererFrais.php';
+    case 'validation':
+        include 'controleurs/c_validation.php';
         break;
-    case 'etatFrais':
-        include 'controleurs/c_etatFrais.php';
+    case 'gererFiche':
+        include 'controleurs/c_gererFiche.php';
         break;
-    case 'controlerFrais':
-        include 'controleurs/c_validerFrais.php';
+    case 'gererCompte':
+        include 'controleurs/c_gererCompte.php';
         break;
-    case 'suivreFrais':
-        include 'controleurs/c_suivreFrais.php';
+    case 'etatFiche':
+        include 'controleurs/c_etatFiche.php';
+        break;
+    case 'controlerFiche':
+        include 'controleurs/c_controlerFiche.php';
         break;
     case 'deconnexion':
         include 'controleurs/c_deconnexion.php';
-        break;    
+        break;
 }
 require 'vues/v_pied.php';

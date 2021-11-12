@@ -1,0 +1,173 @@
+.bouton .blue {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: rgb(255, 255, 255);
+  background: #1161ee;
+  margin-top: 30px;
+}
+
+.buttonRecherche {
+  border: none;
+  padding: 8px 15px;
+  border-radius: 25px;
+  color: rgb(255, 255, 255);
+  background: #1161ee;
+  margin-top: 30px;
+}
+
+.recherche {
+  border-radius: 25px;
+  padding: 5px 15px;
+  margin-left: 50px;
+}
+
+.recherche button[type="submit"] {
+  position: absolute;
+  right: -40px;
+}
+
+.bloc {
+  width: 250px;
+  height: 110px;
+  background-color: white;
+}
+
+.contenuArticle {
+  padding: 0 5px;
+  width: 100%;
+  margin-top: 22px;
+}
+
+.contenutestBlanc {
+  background-color: #fff;
+}
+
+.contenutest2 {
+  padding: 0 5px;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+}
+
+.contenutest3 {
+  padding: 0 5px;
+  background-color: rgb(57, 73, 0);
+  width: 100%;
+}
+
+.unbackground {
+  background-color: red;
+}
+
+.center {
+  text-align: center;
+  color: rgb(240, 240, 240);
+}
+.backcolor {
+    background-color: #3d3f4a8a;
+    width: 100%;
+}
+
+.contenuTopic {
+  margin-top: 105px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 2%;
+  border: 1px solid rgb(240, 240, 240);
+}
+
+.white {
+  color: rgb(240, 240, 240);
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+}
+:-moz-placeholder {
+  font-style: italic;
+}
+::-moz-placeholder {
+  font-style: italic;
+}
+:-ms-input-placeholder {
+  font-style: italic;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap");
+body {
+  margin: 90px;
+  background-color: rgb(31, 32, 42);
+}
+.card {
+  padding: 12px 5px;
+  width: 100%;
+  margin-top: 22px;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 6px;
+}
+.card2 {
+    padding: 12px 5px;
+    width: 60%;
+    margin-top: 22px;
+    background-color: #3235588a;
+    border-radius: 6px;
+  }
+.container2 {
+  padding: 10px;
+  float: left;
+  width: 25%;
+}
+
+
+
+.colone {
+  background-color: rgb(233, 231, 231);
+  padding: 10px;
+  border-radius: 2%;
+}
+.card-header p {
+  color: rgb(104, 104, 104);
+  font-family: "Source Sans Pro", sans-serif;
+}
+.card-header h1 {
+  font-size: 25px;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+}
+.card-body {
+  color: rgb(83, 83, 83);
+  font-family: "Source Sans Pro", sans-serif;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.card-footer .time-read {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.card-footer .buttons {
+  margin-top: 13px;
+  position: relative;
+  left: 80%;
+  margin: 5px;
+}
+.card-footer span {
+  cursor: pointer;
+}
+.card-footer .buttons .comment {
+  margin-right: 10px;
+}
+.card-footer .buttons .like {
+  color: red;
+}
+@media screen and (max-width: 640px) {
+  body {
+    margin: 20px;
+  }
+}
+
+.searchform {
+}

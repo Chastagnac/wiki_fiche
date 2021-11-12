@@ -26,6 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/progress.css" rel="stylesheet">
 </head>
 
 <body>
@@ -38,9 +39,10 @@
                 <div class="row vertical-align">
                     <div class="col-md-4">
                         <h1>
-                            <img src="./images/logo.jpg" class="img-responsive" alt="Wiki fiche" title="wifi fiche">
+                            <img src="../images/wiki_fiche_2_1.png" class="img-responsive" alt="Wiki fiche" title="wifi fiche">
                         </h1>
                     </div>
+
                     <div class="col-md-8">
                         <ul class="nav nav-pills pull-right" role="tablist">
                             <li <?php if (!$uc || $uc == 'accueil') { ?>class="active" <?php } ?>>
@@ -49,27 +51,46 @@
                                     Accueil
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'etatFrais') { ?>class="active" <?php } ?>>
-                                <a href="index.php?uc=etatFrais&action=selectionnerMois">
+                            <li <?php if ($uc == 'gererFiche') { ?>class="active" <?php } ?>>
+                                <a href="index.php?uc=gererFiche&action=selectionnerFiche">
                                     <span class="glyphicon glyphicon-list-alt"></span>
-                                    Fiche
+                                    Les Fiches
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
-                                <a href="index.php?uc=deconnexion&action=demandeDeconnexion">
-                                    <span class="glyphicon glyphicon-log-out"></span>
-                                    Déconnexion
-                                </a>
-                            </li>
+                            <?php if ($_SESSION['role'] !== '-1') { ?>
+                                <li <?php if ($uc == 'gererCompte') { ?>class="active" <?php } ?>>
+                                    <a href="index.php?uc=gererCompte&action=mesInformations">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        Mon compte
+                                    </a>
+                                </li>
+                            <?php
+                            } ?>
+                            <?php if ($_SESSION['role'] !== '-1') { ?>
+                                <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
+                                    <a href="index.php?uc=deconnexion&action=demandeDeconnexion">
+                                        <span class="glyphicon glyphicon-log-out"></span>
+                                        Déconnexion
+                                    </a>
+                                </li>
+                            <?php
+                            } else { ?>
+                                <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
+                                    <a href="index.php?uc=deconnexion&action=demandeEnregistrement">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        S'enregistrer
+                                    </a>
+                                </li>
+                            <?php }
+                            ?>
                         </ul>
                     </div>
                 </div>
             </div>
-        <?php
-        } else {
-        ?>
-            <h1>
-                <img src="./images/logo.jpg" class="img-responsive center-block" alt="Logo Wiki fiche" title="Wiki fiche">
-            </h1>
+            <script>
+                const progress = document.querySelector('.progress-done');
+                progress.style.width = progress.getAttribute('data-done') + '%';
+                progress.style.opacity = 1;
+            </script>
         <?php
         }

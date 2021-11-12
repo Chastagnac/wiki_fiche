@@ -3971,7 +3971,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: -1px;
 }
 .input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group {
+.input-group-btn:l#eeeast-child > .btn-group {
   z-index: 2;
   margin-left: -1px;
 }
@@ -3992,7 +3992,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
+  background-color: #8ca7be81;
 }
 .nav > li.disabled > a {
   color: #777;
