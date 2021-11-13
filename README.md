@@ -14,6 +14,7 @@ Outils, langages et logiciels :
 #####
 Réalisation :
 Documentation technique : 
-  
+https://leochastagnac.fr/assets/images/projectpdf/Documentationtechnique.pdf  
 #####
 Base de donnée : 
+https://leochastagnac.fr/assets/images/projectpdf/dump_wikifiche.sql
